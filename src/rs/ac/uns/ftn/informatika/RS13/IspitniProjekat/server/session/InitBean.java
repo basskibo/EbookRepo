@@ -28,25 +28,34 @@ public class InitBean implements Init {
 	public void init() {
 		
 		
+		/*Category kat0 = new Category();
+		kat0.setName("All");
+		kat0.setCategoryID(0);
+		kat0 = categoryDao.persist(kat0);*/
+		
 		Category kat1 = new Category();
-		kat1.setName("Strip");
+		kat1.setName("Fantasy");
 		kat1 = categoryDao.persist(kat1);
 		
 		Category kat2 = new Category();
-		kat2.setName("Naucna fantastika");
+		kat2.setName("Sci-fi");
 		kat2 = categoryDao.persist(kat2);
 		
 		Category kat3 = new Category();
-		kat3.setName("Misterija");
+		kat3.setName("Comic");
 		kat3 = categoryDao.persist(kat3);
 		
 		Category kat4 = new Category();
-		kat4.setName("Drama");
+		kat4.setName("Mystery");
 		kat4 = categoryDao.persist(kat4);
 		
 		Category kat11 = new Category();
-		kat11.setName("Roman");
+		kat11.setName("Drama");
 		kat11 = categoryDao.persist(kat1);
+		
+		Category kat112 = new Category();
+		kat112.setName("Romantic");
+		kat112 = categoryDao.persist(kat112);
 		
 		User korisnik = new User("Bojan", "Jagetic", "kibo", "123","administrator");
 		korisnikDAO.persist(korisnik);
@@ -54,10 +63,12 @@ public class InitBean implements Init {
 		korisnikDAO.persist(korisnik0);
 		User korisnik1 = new User("Dragan", "Spancic", "gobla", "123", "administrator");
 		korisnikDAO.persist(korisnik1);
-		User korisnik2 = new User("Vojin", "Jovicic", "voja", "123", "moderator",kat1);
+		User korisnik2 = new User("Vojin", "Jovicic", "voja", "123", "subscriber",kat1);
 		korisnikDAO.persist(korisnik2);
-		User korisnik3 = new User("Momir", "Jokic", "moma", "123", "moderator",kat11);
+		User korisnik3 = new User("Momir", "Jokic", "moma", "123", "subscriber",kat112);
 		korisnikDAO.persist(korisnik3);
+		User korisnik4 = new User("Srdjan", "Radojicic", "cipi", "123", "subscriber",kat11);
+		korisnikDAO.persist(korisnik4);
 		
 		
 		

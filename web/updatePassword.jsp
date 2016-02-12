@@ -34,7 +34,7 @@
          
           
           	 <!-- meni kada korisnik nije ulogovan -->
-	         <c:if test="${sessionScope.administrator == null && sessionScope.moderator== null}">	
+	         <c:if test="${sessionScope.administrator == null && sessionScope.subscriber== null}">	
 								<!-- 	<td><a class="dugme" href="./ReadControllerEbooks">Ebooks</a></td>
 									<td><a class="dugme" href="./PrepareReadControllerProizvodjac">Category</a></td>
 									 -->
@@ -100,7 +100,7 @@
 			</c:if>
 			
 			<!-- Meni kada je korisnik ulogovan kao MODERATOR -->
-			<c:if test="${sessionScope.moderator==true}">
+			<c:if test="${sessionScope.subscriber==true}">
 					<div id="navbar" class="navbar-collapse collapse">
 													          <ul class="nav navbar-nav">
 													            <li class="active"><a href="./index.jsp">Home</a></li>
@@ -149,11 +149,11 @@
 	            <c:if test="${sessionScope.admin!=null}">
 					    <p id="printName"> ${sessionScope.adminName} </p>        	
 				</c:if>
-				<c:if test="${sessionScope.administrator == null && sessionScope.moderator == null }"> 
+				<c:if test="${sessionScope.administrator == null && sessionScope.subscriber == null }"> 
 						<a class="dugme" href="./login.jsp">Sign in</a>
 				
 				</c:if>
-				<c:if test="${sessionScope.administrator==true || sessionScope.moderator==true}">
+				<c:if test="${sessionScope.administrator==true || sessionScope.subscriber==true}">
 				           			<td> <a class="dugme" href="./LogoutController">Log out</a> </td>
 				</c:if>	
 					

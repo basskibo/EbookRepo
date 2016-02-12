@@ -44,8 +44,8 @@ public class LoginController extends HttpServlet {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("admin", korisnik);
 				session.setAttribute("adminName", korisnik.getFirstName());
-				if(korisnik.getType().equalsIgnoreCase("moderator")){
-					session.setAttribute("moderator", true);
+				if(korisnik.getType().equalsIgnoreCase("subscriber")){
+					session.setAttribute("subscriber", true);
 				}
 				if(korisnik.getType().equalsIgnoreCase("administrator")){
 					session.setAttribute("administrator", true);

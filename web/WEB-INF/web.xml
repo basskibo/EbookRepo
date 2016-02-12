@@ -52,8 +52,8 @@
    </servlet>
     
    <servlet>
-      <servlet-name>PrepereUpdateControllerKorisnik</servlet-name>
-      <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.PrepereUpdateControllerKorisnik</servlet-class>
+      <servlet-name>PrepareUpdateUser</servlet-name>
+      <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.PrepareUpdateUser</servlet-class>
    </servlet>
    
    <servlet>
@@ -149,8 +149,8 @@
    </servlet-mapping>
       
    <servlet-mapping>
-      <servlet-name>PrepereUpdateControllerKorisnik</servlet-name>
-      <url-pattern>/PrepereUpdateControllerKorisnik</url-pattern>
+      <servlet-name>PrepareUpdateUser</servlet-name>
+      <url-pattern>/PrepareUpdateUser</url-pattern>
    </servlet-mapping>
    
    <servlet-mapping>

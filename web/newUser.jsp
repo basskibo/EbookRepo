@@ -10,11 +10,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href="./izmenaLicnihPodataka.css" rel="stylesheet" type="text/css" />
 	<link href="./listEbooks.css" rel="stylesheet" type="text/css" />
 	<link href="./listCategory.css" rel="stylesheet" type="text/css" />
-	<link href="./bootstrap.css" rel="stylesheet" type="text/css" /><title>All categories</title>
-	
+	<link href="./bootstrap.css" rel="stylesheet" type="text/css" />
+	<script src="./jquery.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		
 	<title>User control</title>
 </head>
@@ -37,7 +39,7 @@
          
           
           	 <!-- meni kada korisnik nije ulogovan -->
-	         <c:if test="${sessionScope.administrator == null && sessionScope.moderator== null}">	
+	         <c:if test="${sessionScope.administrator == null && sessionScope.subscriber== null}">	
 								<!-- 	<td><a class="dugme" href="./ReadControllerEbooks">Ebooks</a></td>
 									<td><a class="dugme" href="./PrepareReadControllerProizvodjac">Category</a></td>
 									 -->
@@ -94,16 +96,11 @@
 											          </ul>
 						</div><!--/.nav-collapse -->
 												
-							<!-- 	<a class="dugme" href="./PrepareCreateControllAutomobil" class="tdli" >Ebooks</a>
-								<a class="dugme" href="./PrepareCreateControllerProizvodjac"  class="tdli">Category</a>
-								<a class="dugme" href="./PrepareCreateControllerKorisnik" class="tdli">Users</a>
-								<a class="dugme" href="./PrepereUpdateControllerKorisnik" class="tdli">Change data</a>
-								<a class="dugme" href="./PrepareUpdateKorisnikLozinka" class="tdli">Change Password</a>
-									 -->
+					
 			</c:if>
 			
 			<!-- Meni kada je korisnik ulogovan kao MODERATOR -->
-			<c:if test="${sessionScope.moderator==true}">
+			<c:if test="${sessionScope.subscriber==true}">
 						 	<div id="navbar" class="navbar-collapse collapse">
 											          <ul class="nav navbar-nav">
 											            <li class="active"><a href="./index.jsp">Home</a></li>
@@ -142,11 +139,11 @@
 	            <c:if test="${sessionScope.admin!=null}">
 					    <p id="printName"> ${sessionScope.adminName} </p>        	
 				</c:if>
-				<c:if test="${sessionScope.administrator == null && sessionScope.moderator == null }"> 
+				<c:if test="${sessionScope.administrator == null && sessionScope.subscriber == null }"> 
 						<a class="dugme" href="./login.jsp">Sign in</a>
 				
 				</c:if>
-				<c:if test="${sessionScope.administrator==true || sessionScope.moderator==true}">
+				<c:if test="${sessionScope.administrator==true || sessionScope.subscriber==true}">
 				           			<td> <a class="dugme" href="./LogoutController">Log out</a> </td>
 				</c:if>	
 					
@@ -157,38 +154,7 @@
 
 
 
-	<!-- <div >
-	<form action="./CreateControllerKorisnik" method="post" accept-charset="ISO-8859-1">
-		<table id="formaTabela">
-			<tr>
-				<td> <p>First Name:</p> <input type="text" style="height:20px" id="firstName" name= "firstName" required> </td>
-				<td> <p>Last Name:</p> <input type="text" style="height:20px" id="lastName" name="lastName" required> </td>
-				
-			</tr>
-			<tr>
-				<td> <p>Username:</p> <input type="text" style="height:20px" id="username" name=""username"" required> </td>
-				<td> <p>Password:</p> <input type="password" style="height:20px" id="userPassword" name="userPassword" required> </td>
-	
-			</tr>
-			
-			<tr>
-				<td> <p>Password again:</p> <input type="password" style="height:20px" id="userPassword2" name="userPassword2" required> </td>
-			</tr>
-			<tr>
-				<td> <p>Tip korisnika(Administrator/moderator):</p>  
-				<select size="1" name="tip">
-					<option value="subscriber">Subscriber</option>
-					<option value="administrator">administrator</option>
-				</select> 
-				</td>
-			</tr>
-		</table>	
-	<button id="registrujSe" type="submit" style="width:120px">Add</button>
-	</form>
-	</div>
-	formaZaRegistraciju
-	 -->
-	 
+
 	     
     <div class="jumbotron">
 	      <div class="container">
@@ -205,7 +171,7 @@
     	
 
 	    
-					    <table id="listaVozila">
+					    <table >
 									
 									
 									<tr>	
@@ -213,14 +179,16 @@
 										  <div class="row">
 									        <div id="rowTitle"  class="col-md-2">First name</div>
 									        <div id="rowTitle"  class="col-md-2">Last name</div>
-									        <div id="rowTitle"  class="col-md-1">Username</div>
+									        <div id="rowTitle"  class="col-md-2">Username</div>
+									        <div id="rowTitle"  class="col-md-2">Type</div>
+									        
 									    	<div id="rowTitle"  class="col-md-2">Category</div>
 									    	<c:if test="${sessionScope.admin!=null}">
 				  												<div id="rowTitle" class="col-md-2">
 				  														Change
 				
 				  												</div>
-														</c:if>		
+											</c:if>		
 									        
 									      </div>	
 									</tr>
@@ -230,17 +198,24 @@
 											 <div class="row">
 				         								<div id="rowBook" class="col-md-2">${user.firstName}</div>
 														<div id="rowBook" class="col-md-2">${user.lastName}</div>
-														<div id="rowBook" class="col-md-1">${user.username}</div>
+														<div id="rowBook" class="col-md-2">${user.username}</div>
+														<div id="rowBook" class="col-md-2">${user.type}</div>
+														
 														<c:if test="${user.category.name== null }">
-															<div id="rowBook" class="col-md-2">No category</div>
+															<c:if test="${user.type == 'administrator' }">
+																		<div id="rowBook" class="col-md-2">Administrator</div>	
+															</c:if>
+															<c:if test="${user.type == 'subscriber' }">
+																		<div id="rowBook" class="col-md-2">All category</div>	
+															</c:if>
 														</c:if>
 														<c:if test="${user.category.name!= null }">
 															<div id="rowBook" class="col-md-2">${user.category.name}</div>
 														</c:if>
 				  										<c:if test="${sessionScope.admin!=null}">
 				  												<div id="rowBook" class="col-md-2">
-				  													<a class="btnAR" href="./login.jsp">Add</a>
-				  													<a class="btnAR" href="./login.jsp">Remove</a>
+				  													<a class="btnAR" href="./login.jsp">Edit</a>
+				  													<a class="btnAR" href="./DeleteControllerKorisnik?userID=${user.userID}">Remove</a>
 				  													
 				  												</div>
 														</c:if>								
@@ -251,45 +226,208 @@
 									
 									
 								</table>
-								
-	    		<form action="./UpdateUserPassword" method="post" accept-charset="ISO-8859-1">
+				
+				
+				<h2>Add new User</h2>				
+	    		<form action="./CreateControllerKorisnik" method="post" accept-charset="ISO-8859-1" onsubmit="return checkForm(this);">
 					        		<c:if test="${sessionScope.admin !=null}">
 					        		
 								                	<div class="input-group">
 									    				<span class="input-group-addon">First Name</span>
-									    				<input type="text" class="form-control" id="username" name="username" required>
+									    				<input type="text" class="form-control"  name="fName" required>
 							  						</div>
 							  						<div class="input-group">
 							  					
 									    				<span  class="input-group-addon">Last Name</span>
-									    				<input type="password"  id="userPassword" name= "userPassword"  class="form-control" required>
+									    				<input type="text"   name= "lName"  class="form-control" required>
 								    				</div>
 								    												                <div class="input-group">
 								    				
 									    				<span class="input-group-addon">Username</span>
-									    				<input type="text" class="form-control" id="username" name="username">
+									    				<input type="text" class="form-control"  name="username">
 									    			</div>
 									                <div class="input-group">
 								    				
 									    				<span  class="input-group-addon">Password</span>
-									    				<input type="password"  id="userPassword" name= "userPassword" class="form-control"  required>
+									    				<input type="password"   name= "userPassword" class="form-control"  required>
 													</div>							    												                
 								    			<div class="input-group">
 								    				<span  class="input-group-addon">Password again</span>
-								    				<input type="password"  id="userPassword" name= "userPassword" class="form-control"  required>
+								    				<input type="password"   name= "userPassword2" class="form-control"  required>
 							  					</div>
-							  					<div class="input-group">			                	
-												 	<p>Tip korisnika(Administrator/moderator):</p>  
-													<select class="select.input-group-lg" size="1" name="tip">
-														<option value="subscriber">Subscriber</option>
-														<option value="administrator">Administrator</option>
-													</select> 
+							  					<div class="input-group" id="tipDiv">			                	
+												 	<p>Tip korisnika:</p>  
+													
+												<!-- 	<input type="radio" name="administrator" id="admin" value="Administrator" />Administrator
+													<input type="radio" name="subscriber" id="sub" value="Subscriber" />Subscriber <br> 
+													 -->
+													 
+													 <select class="form-control" id="sel1" name="type">
+												     	<option id="admin" value="administrator">Administrator</option>
+														<option id="sub" value="subscriber">Subscriber</option>
+												        
+												      </select>
+																			
+												
+													
+													<script>
+													
+													function check(){
+														var e = document.getElementById("sel1");
+														var strUser = e.options[e.selectedIndex].value;
+														if(strUser == 'subscriber'){
+															var i, theContainer, theSelect, theOptions, numOptions, anOption;
+															  theOptions = ['All','Fantasy','Sci-fi','Romantic','Comic','Mystery'];
+
+															  // Create the container <div>
+															  theContainer = document.createElement('div');
+															  theContainer.id = 'subDiv';
+
+															  // Create the <select>
+															  theSelect = document.createElement('select');
+
+															  // Give the <select> some attributes
+															  theSelect.name = 'category';
+															  theSelect.id = 'sel2';
+															  theSelect.className = 'form-control';
+
+														
+
+															  // Add some <option>s
+															  numOptions = theOptions.length;
+															  for (i = 0; i < numOptions; i++) {
+															      anOption = document.createElement('option');
+															      anOption.value = theOptions[i];
+															      anOption.name= i;
+															      anOption.innerHTML = theOptions[i];
+															      theSelect.appendChild(anOption);
+															  }
+															  document.getElementById('tipDiv').appendChild(theContainer);
+
+															  // Add the <div> to the DOM, then add the <select> to the <div>
+															  theContainer.appendChild(theSelect);
+															  document.getElementById('setUser').style.visibility='hidden';
+															  document.getElementById('admin').style.visibility='hidden';
+															
+														}
+													}
+													
+/* 														 function check() {
+															
+															if(document.getElementById('sub').) {
+																  //Male radio button is checked
+																  alert("CAOOOO");
+																  var i, theContainer, theSelect, theOptions, numOptions, anOption;
+																  theOptions = ['All','Fantasy','Sci-fi','Strip'];
+
+																  // Create the container <div>
+																  theContainer = document.createElement('div');
+																  theContainer.id = 'subDiv';
+
+																  // Create the <select>
+																  theSelect = document.createElement('select');
+
+																  // Give the <select> some attributes
+																  theSelect.name = 'category';
+																  theSelect.id = 'subSel';
+																  theSelect.className = 'class_of_select';
+
+															
+
+																  // Add some <option>s
+																  numOptions = theOptions.length;
+																  for (i = 0; i < numOptions; i++) {
+																      anOption = document.createElement('option');
+																      anOption.value = i;
+																      anOption.innerHTML = theOptions[i];
+																      theSelect.appendChild(anOption);
+																  }
+																  document.getElementById('tipDiv').appendChild(theContainer);
+
+																  // Add the <div> to the DOM, then add the <select> to the <div>
+																  theContainer.appendChild(theSelect);
+																  document.getElementById('setUser').style.visibility='hidden';
+																  document.getElementById('admin').style.visibility='hidden';
+																  
+																}
+															else if(document.getElementById('sub').checked == false && document.getElementById('admin').checked == false ){
+																alert("You have to set type of user.");
+															}
+															}
+														
+ */													</script>
+ 
+ 
+										 <script type="text/javascript">
+										
+											  function checkForm(form)
+											  {
+											    if(form.username.value == "") {
+											      alert("Error: Username cannot be blank!");
+											      form.username.focus();
+											      return false;
+											    }
+											    re = /^\w+$/;
+											    if(!re.test(form.username.value)) {
+											      alert("Error: Username must contain only letters, numbers and underscores!");
+											      form.username.focus();
+											      return false;
+											    }
+											
+											    if(form.userPassword.value != "" && form.userPassword.value == form.userPassword2.value) {
+											      if(form.pwd1.value.length < 6) {
+											        alert("Error: Password must contain at least six characters!");
+											        form.userPassword.focus();
+											        return false;
+											      }
+											      if(form.userPassword.value == form.username.value) {
+											        alert("Error: Password must be different from Username!");
+											        form.userPassword.focus();
+											        return false;
+											      }
+											      re = /[0-9]/;
+											      if(!re.test(form.userPassword.value)) {
+											        alert("Error: password must contain at least one number (0-9)!");
+											        form.pwd1.focus();
+											        return false;
+											      }
+											      re = /[a-z]/;
+											      if(!re.test(form.userPassword.value)) {
+											        alert("Error: password must contain at least one lowercase letter (a-z)!");
+											        form.userPassword.focus();
+											        return false;
+											      }
+											      re = /[A-Z]/;
+											      if(!re.test(form.userPassword.value)) {
+											        alert("Error: password must contain at least one uppercase letter (A-Z)!");
+											        form.userPassword.focus();
+											        return false;
+											      }
+											    } else {
+											      alert("Error: Please check that you've entered and confirmed your password!");
+											      form.userPassword.focus();
+											      return false;
+											    }
+											
+											    alert("You entered a valid password: " + form.userPassword.value);
+											    return true;
+											  }
+										
+										</script>
+													
 												</div>
-								                <button id="submit" type="submit" class="btn-success" style="width:90px">Submit</button>
+												
+												<span onClick="check();" class="setType" style="cursor: pointer;" id="setUser">Set type of User</span>
+												<h5>If you choose Subscriber you <span class="crveno">MUST</span> click on the <q>Set type of User</q>button to choose from categories.</h5>
+												
+												<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button>
 
 					                </c:if>
 						</form>
-	    
+						
+						
+						
+								    
 	    
 	    	</div>
 	    	
@@ -299,39 +437,16 @@
 	</div>
 	 
 	 
+	  <script src="./bootstrap.min.js"></script>
+	    <script src="./bootstrap.js"></script>
+	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+	    <script src="./bootstrap.min.js"></script>
 	 
 	 
 	 
-	 
-	 
-<%-- 	<div id="listaKorisnika">
-		<table id="listaTable">
-			<c:set var="count" value="0" scope="page"/>	
-					<tr>		
-						<td></td>
-						<td style="color: teal">First Name</td>
-						<td style="color: teal">Last Name</td>
-						
-						<td style="color: teal">Type</td>
-						<td style="color: teal">Category (Subscriber)</td>
-						
-					</tr>
-					<c:forEach items = "${users}" var = "user">
-					<tr>
-						<c:set var="count" value="${count + 1}" scope="page"/>
-						<td><c:out value="${count}" />.</td>
-						<td>${user.firstName}</td>
-						<td>${user.lastName}</td>
-						
-						<td>${user.type}</td>
-						<td>${user.category.name}</td>
-						
-						<td><a href="./DeleteControllerKorisnik?korisnikId=${user.id}">Ukloni</a></td>
-					</tr>
-				</c:forEach>
-		</table>
-	</div>
-	--%>
+
 	
 	
 </body>

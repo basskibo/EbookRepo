@@ -1,27 +1,24 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
-
-<fmt:setBundle basename="messages.messages"/>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<title>e-Book Store </title>
-		<link href="./index.css" rel="stylesheet" type="text/css" />
-		<link href="./bootstrap.css" rel="stylesheet" type="text/css" />
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link href="./listEbooks.css" rel="stylesheet" type="text/css" />
+	<link href="./listCategory.css" rel="stylesheet" type="text/css" />
+	<link href="./bootstrap.css" rel="stylesheet" type="text/css" />
+	<script src="./jquery.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		
-		<script src="./npm.js" type="text/javascript"></script>
-		
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
-		<meta HTTP-EQUIV="Expires" CONTENT="-1">
-		
-	</head>
-	<body>
-	
-	
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<title>Change your data</title>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -157,63 +154,83 @@
 	
 	
 	
-	<c:if test="${sessionScope.administrator != null}">	
-	 					
-	   <div class="jumbotron">
+	 <div class="jumbotron">
 	      <div class="container">
-	        <h1>Welcome back ${sessionScope.adminName } !</h1>
-	      
-	        	<p><a class="btn btn-primary btn-lg" href="./ReadControllerEbooks" role="button">Find your book &raquo;</a></p>
-	      </div>
-       </div>
+	       <!--  <h1>List of ebooks</h1>
+	        	<p >Find what you like or choose category you like</p>
+	        	<div id="filtriranje"> -->
+	        	<div class="page-header">
+			        <h1>Change your password</h1>
+			        <p class="lead">Here you can change your password.You have to enter your old password and then 2 times new password</p>
+			      
+			    </div>
+					
 	
-	</c:if>
+	<form action="./UpdateControllerKorisnik" method="post" accept-charset="ISO-8859-1" >
+					        		<c:if test="${sessionScope.admin !=null}">
+					        		
+								                	<div class="input-group">
+									    				<span class="input-group-addon">First Name</span>
+									    				<input type="text" class="form-control"  name="fName" value="${sessionScope.admin.firstName}" required>
+							  						</div>
+							  						<div class="input-group">
+							  					
+									    				<span  class="input-group-addon">Last Name</span>
+									    				<input type="text"   name= "lName"  class="form-control" value="${sessionScope.admin.lastName}" required>
+								    				</div>
+								    												                <div class="input-group">
+								    				
+									    				<span class="input-group-addon">Username</span>
+									    				<input type="text" class="form-control" value="${sessionScope.admin.username}" name="username">
+									    			</div>
+									                					    												                
+								    			<p>If you want to change your password follow this <a href="./PrepareUpdateKorisnikLozinka "> <span class="crveno">link.</span></a> 
+							  					<div class="input-group" id="tipDiv">			                	
+												 	<p>Tip korisnika:</p>  
+													
+												<!-- 	<input type="radio" name="administrator" id="admin" value="Administrator" />Administrator
+													<input type="radio" name="subscriber" id="sub" value="Subscriber" />Subscriber <br> 
+													 -->
+													 
+													 
+													 <select class="form-control" id="sel1" name="type">
+													 <c:if test="${sessionScope.admin.type == 'administrator' }">
+													 	<option id="admin" value="administrator">Administrator</option>
+														<option id="sub" value="subscriber">Subscriber</option>
+													 </c:if>
+													 <c:if test="${sessionScope.admin.type == 'subscriber' }">
+													 	<option id="sub" value="subscriber">Subscriber</option>
+													 	<option id="admin" value="administrator">Administrator</option>
+													 </c:if>
+												     	
+												        
+												      </select>
+												      <c:if test="${sessionScope.admin.type =='subscriber' }">
+													  <select class="form-control" id='sel2' name="cat">
+													  	<c:if test="${sessionScope.admin.category.name == 'Fantasy'}">
+													  		<option value="fantasy">Fantasy </option>
+													  	</c:if>
+													  	<c:if test="${sessionScope.admin.category.name == 'Sci-fi'}">
+													  		<option value="sci-fi">Sci-fi </option>
+													  	</c:if>
+													  	<c:if test="${sessionScope.admin.category.name == 'Romantic'}">
+													  		<option value="romantic">Romantic </option>
+													  	</c:if>
+													  	<c:if test="${sessionScope.admin.category.name == 'Comic'}">
+													  		<option value="Comic">Comic </option>
+													  	</c:if>
+													  </select>	
+													  </c:if>				
+												</div>
+												
+												<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button>
+												
+												</c:if>
+												</form>
+												
 	
-	
-	<c:if test="${sessionScope.subscriber != null}">	
-	 					
-	   <div class="jumbotron">
-	      <div class="container">
-	        <h1>Welcome back ${sessionScope.adminName } !</h1>
-	      	<p>Don't hessitate,take a look at ebooks in your category </p>
-	        	<p><a class="btn btn-primary btn-lg" href="./ReadControllerEbooks" role="button">Find your book &raquo;</a></p>
-	      </div>
-       </div>
-	
-	</c:if>
-	
-	
-	<c:if test="${sessionScope.administrator == null && sessionScope.subscriber == null}">	
-	 					
-	   <div class="jumbotron">
-	      <div class="container">
-	        <h1>Welcome to our eBook store!</h1>
-	        	<p >Here you can find variety of books in pdf format.If you want to be able to download you have to log in as our subscribed user.You can subscribe to all of our categories or you 
-	        	can just subscribe to one category.It's your choice,find more,search better..</p>
-	        	<p><a class="btn btn-primary btn-lg" href="./ReadControllerEbooks" role="button">Find your book &raquo;</a></p>
-	      </div>
-       </div>
-	
-	</c:if>
+	</div>
+	</div>
 
-		
-		<p class=".blockquote-reverse">Copyright &copy; 2015 Jagetic Bojan</p>
-
-			
-
-		
-		
-	    <script src="./bootstrap.min.js"></script>
-	    <script src="./bootstrap.js"></script>
-	    <script src="./jquery.js" type="text/javascript"></script>
-	
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-	    <script src="./bootstrap.min.js"></script>
-	    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	    <script src="./ie10-viewport-bug-workaround.js"></script>
-			
-		
-		
-	</body>
+</body>
 </html>

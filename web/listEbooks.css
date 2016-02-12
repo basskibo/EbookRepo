@@ -198,5 +198,39 @@ hr {
     border-radius: 5px;
 }
 
+.btnAR a: hover{
+	text-decoration: none;
+	color:#fed142;
+}
+
+#subSel{
+	margin-top:10px;
+	width:100px;
+	
+}
+
+
+#setUser{
+	background: rgb(0,38,62);
+    color: #eee;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-radius: 5px;
+}
+
+
+h5{
+	  text-decoration: underline;
+}
+
+.crveno{
+	
+	color:red;
+	font-size: 18px;
+	font-weight: bold;
+}
+}
 
 

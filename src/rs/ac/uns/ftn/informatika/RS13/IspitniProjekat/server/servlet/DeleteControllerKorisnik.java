@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.User;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.UserDaoLocal;
 
 public class DeleteControllerKorisnik extends HttpServlet {
@@ -22,12 +23,12 @@ public class DeleteControllerKorisnik extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
-/*		try{
-			String korisnikId = null;
-			korisnikId = request.getParameter("korisnikId");
-			System.out.println(request.getParameter("korisnikId"));
-			User korisnik = korisnikDao.findById(Integer.parseInt(korisnikId));
-			System.out.println(korisnik.getId());
+		try{
+			String userid = null;
+			userid = request.getParameter("userID");
+			System.out.println(request.getParameter("userID"));
+			User korisnik = korisnikDao.findById(Integer.parseInt(userid));
+			System.out.println(korisnik.getUserID());
 			korisnikDao.remove(korisnik);
 			
 			getServletContext().getRequestDispatcher("/PrepareCreateControllerKorisnik").forward(request, response);
@@ -38,7 +39,7 @@ public class DeleteControllerKorisnik extends HttpServlet {
 		} catch (IOException e) {
 			log.error(e);
 			throw e;
-		}*/
+		}
 	}
 	
 	protected void doPost(HttpServletRequest request, 	HttpServletResponse response) throws ServletException, IOException {

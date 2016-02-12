@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.Category;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.User;
+import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.CategoryDaoLocal;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.UserDaoLocal;
 
 public class CreateControllerKorisnik extends HttpServlet {
@@ -22,56 +24,131 @@ public class CreateControllerKorisnik extends HttpServlet {
 	@EJB
 	private UserDaoLocal korisnikDao;
 	
+	@EJB
+	private CategoryDaoLocal categoryDao;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	/*	try{
-			String ime = null;
-			String prezime = null;
-			String korisnickoIme = null;
-			String lozinka = null;
-			String lozinkaPonovo = null;
-			String tipKorisnika = null;
-			String proizvodjacId = null;
+		try{
+			String fName = null;
+			String lName = null;
+			String username = null;
+			String userPassword = null;
+			String userPassword2 = null;
+			String type = null;
+			String cat = null;
 			
 
-			if ((request.getParameter("ime") != null) && (!"".equals(request.getParameter("ime")))) {
-				ime = request.getParameter("ime");
+			if ((request.getParameter("fName") != null) && (!"".equals(request.getParameter("fName")))) {
+				fName = request.getParameter("fName");
 				
 			}
 			
-			if ((request.getParameter("prezime") != null) && (!"".equals(request.getParameter("prezime")))) {
-				prezime = request.getParameter("prezime");
+			if ((request.getParameter("lName") != null) && (!"".equals(request.getParameter("lName")))) {
+				lName = request.getParameter("lName");
 			}
 			
-			if ((request.getParameter("korisnickoIme") != null) && (!"".equals(request.getParameter("korisnickoIme")))) {
-				korisnickoIme = request.getParameter("korisnickoIme");
+			if ((request.getParameter("username") != null) && (!"".equals(request.getParameter("username")))) {
+				username = request.getParameter("username");
 			}
 			
-			if ((request.getParameter("lozinka") != null) && (!"".equals(request.getParameter("lozinka")))) {
-				lozinka = request.getParameter("lozinka");
+			if ((request.getParameter("userPassword") != null) && (!"".equals(request.getParameter("userPassword")))) {
+				userPassword = request.getParameter("userPassword");
 			}
 			
-			if ((request.getParameter("lozinkaPonovo") != null) && (!"".equals(request.getParameter("lozinkaPonovo")))) {
-				lozinkaPonovo = request.getParameter("lozinkaPonovo");
+			if ((request.getParameter("userPassword2") != null) && (!"".equals(request.getParameter("userPassword2")))) {
+				userPassword2 = request.getParameter("userPassword2");
 			}
 
-				tipKorisnika = request.getParameter("tip");
+			type = request.getParameter("type");
 			
+			
+			
+			
+
 			User korisnik = new User();
-			if(lozinka!=null && lozinkaPonovo!=null && lozinka.equals(lozinkaPonovo)){
-			if(ime!=null)
-				korisnik.setImeKorisnika(ime);
+			if(userPassword!=null && userPassword2!=null && userPassword.equals(userPassword2)){
+			if(fName!=null)
+				korisnik.setFirstName(fName);
 			
-			if(prezime!=null)
-				korisnik.setPrezimeKorisnika(prezime);
+			if(lName!=null)
+				korisnik.setLastName(lName);
 			
-			if(korisnickoIme!=null)
-				korisnik.setKorisnickoImeKorisnika(korisnickoIme);
+			if(username!=null)
+				korisnik.setUsername(username);
 			
 			
-				korisnik.setLozinkaKorisnika(lozinka);
+				korisnik.setUserPassword(userPassword);
+				
+				
+				cat = request.getParameter("category");
+				
+				
+				Category category= new Category();
+
+			if(type.equalsIgnoreCase("administrator")){
+					korisnik.setType("administrator");
+					System.out.println("Korisnikov : "+ korisnik.getType().toString());
+					}
+				else{
+					
+					
+					if(cat == null){
+						korisnik.setCategory(null);
+					}	else if(cat.equalsIgnoreCase("All")){
+							System.out.println("******************Kategorija je sve "+ cat);	
+							korisnik.setCategory(null);
+							System.out.println("******************Kategorija korisnika je "+ category.getName());	
+							korisnik.setType("subscriber");	
+					}
+						else if(cat.equalsIgnoreCase("Fantasy")){
+							cat = "1";
+							category.setCategoryID(Integer.parseInt(cat));
+							System.out.println("******************Kategorija je "+ cat);	
+							korisnik.setCategory(category);
+							System.out.println("******************Kategorija korisnika je "+ category.getName());	
+							korisnik.setType("subscriber");
+
+							
+						}else if(cat.equalsIgnoreCase("Sci-fi")){
+							cat="2";
+							category.setCategoryID(Integer.parseInt(cat));
+							System.out.println("******************Kategorija je "+ cat);	
+							korisnik.setCategory(category);
+							System.out.println("******************Kategorija korisnika je "+ category.getName());	
+							korisnik.setType("subscriber");
+
+						}else if(cat.equalsIgnoreCase("Romantic")){
+							cat = "3";
+							category.setCategoryID(Integer.parseInt(cat));
+							System.out.println("******************Kategorija je "+ cat);	
+							korisnik.setCategory(category);
+							System.out.println("******************Kategorija korisnika je "+ category.getName());	
+							korisnik.setType("subscriber");
+
+						}else if(cat.equalsIgnoreCase("Comic")){
+							cat="4";
+							category.setCategoryID(Integer.parseInt(cat));
+							System.out.println("******************Kategorija je "+ cat);	
+							korisnik.setCategory(category);
+							System.out.println("******************Kategorija korisnika je "+ category.getName());	
+							korisnik.setType("subscriber");
+
+						}
+						
+					
+					
+					
+				}
+				
+					
+					
+				
+				
+				
+				
 			
-			korisnik.setTipKorisnika(tipKorisnika);
+			
 			korisnikDao.persist(korisnik);
 			getServletContext().getRequestDispatcher("/PrepareCreateControllerKorisnik").forward(request, response);
 			return;
@@ -85,7 +162,8 @@ public class CreateControllerKorisnik extends HttpServlet {
 		} catch (IOException e) {
 			log.error(e);
 			throw e;
-		}*/
+		}
+		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
