@@ -24,38 +24,53 @@ public class UpdateControllerKorisnik extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/*try{
+		try{
 			
 			String korisnikId = null;
 			String imeKorisnika = null;
 			String prezimeKorisnika = null;
 			String korisnickoImeKorisnika = null;
+			String tipKorisnika = null;
+			String kat = null;
 			
-			korisnikId = request.getParameter("id");
+			korisnikId = request.getParameter("userID");
 			
-			if((request.getParameter("ime")!=null)&&(!"".equals(request.getParameter("ime")))){
-				imeKorisnika = request.getParameter("ime");
+			if((request.getParameter("fName")!=null)&&(!"".equals(request.getParameter("fName")))){
+				imeKorisnika = request.getParameter("fName");
 			}
 			
-			if((request.getParameter("prezime")!=null)&&(!"".equals(request.getParameter("prezime")))){
-				prezimeKorisnika = request.getParameter("prezime");
+			if((request.getParameter("lName")!=null)&&(!"".equals(request.getParameter("lName")))){
+				prezimeKorisnika = request.getParameter("lName");
 			}
-			if((request.getParameter("korIme")!=null)&&(!"".equals(request.getParameter("korIme")))){
-				korisnickoImeKorisnika = request.getParameter("korIme");
+			if((request.getParameter("username")!=null)&&(!"".equals(request.getParameter("username")))){
+				korisnickoImeKorisnika = request.getParameter("username");
+			}
+			if((request.getParameter("type")!=null)&&(!"".equals(request.getParameter("type")))){
+				tipKorisnika = request.getParameter("type");
+			}
+			if((request.getParameter("cat")!=null)&&(!"".equals(request.getParameter("cat")))){
+				kat = request.getParameter("cat");
 			}
 			
 			if((korisnikId != null) && (!korisnikId.equals(""))){
 				User korisnik = new User();
-				korisnik.setId(new Integer(korisnikId));
+				korisnik.setUserID(new Integer(korisnikId));
+				
 
 				if(imeKorisnika != null)
-					korisnik.setImeKorisnika(imeKorisnika);
+					korisnik.setFirstName(imeKorisnika);
 				
 				if(prezimeKorisnika != null)
-					korisnik.setPrezimeKorisnika(prezimeKorisnika);
+					korisnik.setLastName(prezimeKorisnika);
 				
 				if(korisnickoImeKorisnika != null)
-					korisnik.setKorisnickoImeKorisnika(korisnickoImeKorisnika);	
+					korisnik.setUsername(korisnickoImeKorisnika);
+				
+				if(tipKorisnika != null)
+					korisnik.setType(tipKorisnika);
+				
+				if(kat != null)
+					korisnik.setCategory(null);
 				
 			korisnikDao.merge(korisnik);	
 			}
@@ -64,7 +79,7 @@ public class UpdateControllerKorisnik extends HttpServlet {
 		}catch (IOException e) {
 			log.error(e);
 			throw e;
-		}*/
+		}
 	}
 	
 	protected void doPost(HttpServletRequest request, 	HttpServletResponse response) throws ServletException, IOException {

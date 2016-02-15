@@ -2,10 +2,13 @@
 	margin: 0;
 	padding: 0;
 	-webkit-font-smoothing: antialiased;
+	
 }
 
 body{
 	background-color: silver;
+	background-image: url('http://www.starwars.com/wp-content/uploads/sites/6/2015/09/TheArtOfSWTFA_Cover_8_26-1024x950.jpg') ;    
+
 }
 
 #container{

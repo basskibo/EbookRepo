@@ -10,38 +10,39 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.Category;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.CategoryDaoLocal;
 
-public class CreateControllerProizvodjac extends HttpServlet {
+public class CreateControllerCategory extends HttpServlet {
 
 	private static final long serialVersionUID = -123124112L;
 	private static Logger log = Logger.getLogger(CreateControllerKorisnik.class);
 	
 	@EJB
-	private CategoryDaoLocal proizvodjacDao;
+	private CategoryDaoLocal categoryDao;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	/*	try{
+		try{
 			String naziv = null;
 			
-			if ((request.getParameter("naziv") != null) && (!"".equals(request.getParameter("naziv")))) {
-				naziv = request.getParameter("naziv");
+			if ((request.getParameter("cName") != null) && (!"".equals(request.getParameter("cName")))) {
+				naziv = request.getParameter("cName");
 			}
 			
-			Category proizvodjac = new Category();
+			Category cat = new Category();
 			if(naziv!=null){
-				proizvodjac.setNazivProizvodjaca(naziv);
+				cat.setName(naziv);
 			}
 			
-			proizvodjacDao.persist(proizvodjac);
-			getServletContext().getRequestDispatcher("/PrepareCreateControllerProizvodjac").forward(request, response);
+			categoryDao.persist(cat);
+			getServletContext().getRequestDispatcher("/PrepareReadControllerCategory").forward(request, response);
 		}catch (ServletException e) {
 			log.error(e);
 			throw e;
 		} catch (IOException e) {
 			log.error(e);
 			throw e;
-		}*/
+		}
 		
 	}
 	

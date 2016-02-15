@@ -11,7 +11,6 @@
 		<link href="./index.css" rel="stylesheet" type="text/css" />
 		<link href="./bootstrap.css" rel="stylesheet" type="text/css" />
 		
-		<script src="./npm.js" type="text/javascript"></script>
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
@@ -50,10 +49,11 @@
 								              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
 								              <ul class="dropdown-menu">
 								                <li><a href="./PrepareReadControllerCategory">See all</a></li>
-								                <li><a href="#">Sci-fi</a></li>
-								                <li><a href="#">Drama</a></li>
+								               
 								                <li role="separator" class="divider"></li>
 								                <li class="dropdown-header">See more</li>
+								                 <li><a href="#">Sci-fi</a></li>
+								                <li><a href="#">Drama</a></li>
 								                <li><a href="#">Epska poezija</a></li>
 								                <li><a href="#">Fantazija</a></li>
 								              </ul>

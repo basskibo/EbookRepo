@@ -55,7 +55,7 @@ public class UpdateUserPassword extends HttpServlet {
 					response.sendRedirect(response.encodeURL("./uspesno.jsp"));
 				}
 				else{
-					response.sendRedirect(response.encodeURL("./izmenaLozinke.jsp"));
+					response.sendRedirect(response.encodeURL("./updatePassword.jsp"));
 				}
 				
 			}

@@ -223,7 +223,7 @@
   										<c:if test="${sessionScope.admin!=null}">
   												<div id="rowBook" class="col-md-2">
   													<a class="btnAR"  href="./login.jsp">Add</a>
-  													<a class="btnAR" href="./login.jsp">Remove</a>
+  													<a class="btnAR" href="./DeleteControllerCategory?category_id=${cat.categoryID }">Remove</a>
   													
   												</div>
 										</c:if>	
@@ -267,22 +267,20 @@
 			
 			 
 			<c:if test="${sessionScope.admin!=null}">
-				<table>
-					<tr>
-						<td>Nesto</td>
-					</tr>
-					<tr>
-						<td>saga</td>
-					</tr>
-					<tr>
-						<td>gsag</td>
-					</tr>
-				
-				
-				</table>
+				<h2>Add new Category</h2>				
+	    		<form action="./CreateControllerCategory" method="post" accept-charset="ISO-8859-1">
+					        		<c:if test="${sessionScope.admin !=null}">
+					        		
+								                	<div class="input-group">
+									    				<span class="input-group-addon">Category Name</span>
+									    				<input type="text" class="form-control"  name="cName" required>
+							  						</div>
+							  					
+								    				<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button>
+								    										
 			
-			
-			
+									</c:if>
+				</form>
 			
 			</c:if>
 			 

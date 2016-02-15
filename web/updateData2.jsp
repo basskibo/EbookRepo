@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -159,8 +160,14 @@
 	        	<div class="page-header">
 			        <h1>Change data</h1>
 			        <p class="lead">Here you can change data.You can enter new first and last name,also you can change password.</p>
-			      
-			    </div>
+					<c:forEach items = "${users}" var = "u">
+					
+						<p>u.fName </p>
+						<p>u.lName </p>
+						<p>u.username </p>
+						
+					</c:forEach>
+				</div>
 					
 	
 	<form action="./UpdateControllerKorisnik" method="post" accept-charset="ISO-8859-1" >

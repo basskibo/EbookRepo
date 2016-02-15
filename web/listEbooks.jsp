@@ -190,7 +190,7 @@
 					        <div id="rowTitle"  class="col-md-2">Title</div>
 					        <div id="rowTitle"  class="col-md-2">Author</div>
 					        <div id="rowTitle"  class="col-md-1">Publication year</div>
-					        <div id="rowTitle"  class="col-md-2">Filename</div>
+					        <div id="rowTitle"  class="col-md-2">Language</div>
 					    	<div id="rowTitle"  class="col-md-2">Category</div>
 					    	<c:if test="${sessionScope.admin!=null}">
   												<div id="rowTitle" class="col-md-2">
@@ -208,7 +208,7 @@
          								<div id="rowBook" class="col-md-2">${ebook.title}</div>
 										<div id="rowBook" class="col-md-2">${ebook.author}</div>
 										<div id="rowBook" class="col-md-1">${ebook.year}</div>
-										<div id="rowBook" class="col-md-2">${ebook.filename}</div>
+										<div id="rowBook" class="col-md-2">${ebook.language.name}</div>
 										<div id="rowBook" class="col-md-2">${ebook.category.name}</div>
   										<c:if test="${sessionScope.admin!=null}">
   												<div id="rowBook" class="col-md-2">

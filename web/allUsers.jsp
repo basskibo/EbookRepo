@@ -29,10 +29,10 @@
 					<tr>
 						<c:set var="count" value="${count + 1}" scope="page"/>
 						<td><c:out value="${count}" />.</td>
-						<td>${korisnik.imeKorisnika}</td>
-						<td>${korisnik.prezimeKorisnika}</td>
+						<td>${korisnik.username}</td>
+						<td>${korisnik.fName}</td>
 						
-						<td>${korisnik.tipKorisnika}</td>
+						<td>${korisnik.type}</td>
 						<td><a href="./DeleteControllerKorisnik?korisnikId=${korisnik.id}">Ukloni</a></td>
 					</tr>
 				</c:forEach>

@@ -214,7 +214,7 @@
 														</c:if>
 				  										<c:if test="${sessionScope.admin!=null}">
 				  												<div id="rowBook" class="col-md-2">
-				  													<a class="btnAR" href="./login.jsp">Edit</a>
+				  													<a class="btnAR" href="./PrepareUpdateUser2?userID=${user.userID }">Edit</a>
 				  													<a class="btnAR" href="./DeleteControllerKorisnik?userID=${user.userID}">Remove</a>
 				  													
 				  												</div>
@@ -255,6 +255,7 @@
 								    				<span  class="input-group-addon">Password again</span>
 								    				<input type="password"   name= "userPassword2" class="form-control"  required>
 							  					</div>
+							  					
 							  					<div class="input-group" id="tipDiv">			                	
 												 	<p>Tip korisnika:</p>  
 													

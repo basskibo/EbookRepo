@@ -176,27 +176,51 @@
 					
     
     	
-	    	<form action="./UpdateUserPassword" method="post" accept-charset="ISO-8859-1">
+	    	<form action="./UpdateUserPassword" method="post" accept-charset="ISO-8859-1" onsubmit="return checkForm(this);">
 					        		<c:if test="${sessionScope.admin !=null}">
 					        		
 					                	<div class="input-group">
 						    				<span class="input-group-addon">Old Password</span>
-						    				<input type="password" class="form-control"  name="userPasswordOld">
+						    				<input type="password" class="form-control"  name="userPasswordOld" required>
 					  					</div>
 					  					<div class="input-group">
 						    				<span  class="input-group-addon">New Password</span>
-						    				<input type="password"   name= "userPasswordNew"  class="form-control" >
+						    				<input type="password"   name= "userPasswordNew"  class="form-control" required>
 					  					</div>
 					  					<div class="input-group">
 						    				<span class="input-group-addon">New Password again</span>
-						    				<input type="password" class="form-control" name="userPasswordNew2">
+						    				<input type="password" class="form-control" name="userPasswordNew2" required>
 					  					</div>
 					  					<p>**After you change your password you have to log out and log in again to see changed passwod. </p>
 					  
 									            <button id="submit" type="submit" class="btn-success" style="width:90px">Submit</button>
 											    <input type="hidden" name="userID" value="${sessionScope.admin.userID}">
 												<input type="hidden" name="tLozinka" value="${sessionScope.admin.userPassword}">
-											                	
+											      
+											      
+								<script type="text/javascript">
+										
+											  function checkForm(form)
+											  {
+	
+/* 												alert("Stara: "+ form.userPasswordOld.value + " ______" + "nova:"+ form.userPasswordNew.value + "___ trenutrna:"+ form.tLozinka.value);
+ */											    
+											      if(form.userPasswordNew.value != form.userPasswordNew2.value) {
+											        alert("Error: You have to repeat new password!");
+											        form.userPasswordNew.focus();
+											        return false;
+											      }
+											    
+											      if(form.userPasswordOld.value != form.tLozinka.value){
+											    	  alert("You entered the wrong password!");
+											    	  form.userPasswordOld.focus();
+											    	  return false;
+											      }
+											
+											  	}
+											  
+										
+								</script>          	
 					                	
 					                	
 					                </c:if>
@@ -208,5 +232,7 @@
     
 	</div>
 
+
+ 								
 </body>
 </html>

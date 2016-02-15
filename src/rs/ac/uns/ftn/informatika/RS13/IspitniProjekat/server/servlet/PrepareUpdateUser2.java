@@ -13,18 +13,21 @@ import org.apache.log4j.Logger;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.User;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.UserDaoLocal;
 
-public class PrepareUpdateUser extends HttpServlet{
+public class PrepareUpdateUser2 extends HttpServlet{
 	@EJB
 	private UserDaoLocal korisnikDao;
 	
 	private static final long serialVersionUID = 10693418940010096L;
 	
-	private static Logger log = Logger.getLogger(PrepareUpdateUser.class);
+	private static Logger log = Logger.getLogger(PrepareUpdateUser2.class);
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-		response.sendRedirect(response.encodeRedirectURL("./updateData.jsp"));
+		String userid= null;
+		User korisnik = null;
+		userid = request.getParameter("userID");
+		request.setAttribute("user", korisnikDao.findById(Integer.parseInt(userid)));
+		response.sendRedirect(response.encodeRedirectURL("./updateData2.jsp"));
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
