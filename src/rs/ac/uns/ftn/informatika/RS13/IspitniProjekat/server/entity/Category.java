@@ -38,6 +38,7 @@ public class Category implements Serializable {
 	@OneToMany(cascade = { ALL }, fetch = LAZY, mappedBy = "category")
 	private Set<User> users = new HashSet<User>();
 	
+
 	
 
 	public void addEbook(Ebook v) {

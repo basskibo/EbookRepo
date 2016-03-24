@@ -222,7 +222,7 @@
 										
   										<c:if test="${sessionScope.admin!=null}">
   												<div id="rowBook" class="col-md-2">
-  													<a class="btnAR"  href="./login.jsp">Add</a>
+  													<a class="btnAR"  href="./login.jsp">Edit</a>
   													<a class="btnAR" href="./DeleteControllerCategory?category_id=${cat.categoryID }">Remove</a>
   													
   												</div>
