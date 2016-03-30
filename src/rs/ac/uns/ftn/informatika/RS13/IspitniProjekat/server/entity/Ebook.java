@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ebook")
 @NamedQueries({
-	@NamedQuery(name="findAutomobilByModel", query="SELECT a from Automobil a where a.model.id like :modelId ORDER BY :naziv"),
+	@NamedQuery(name="findEbookByCategory", query="SELECT a from ebook a where a.category.category_id like :category_id ORDER BY :name"),
 	@NamedQuery(name="findAutomobilByProizvodjac", query="SELECT a from Automobil a where a.proizvodjac.id like :proizvodjacId ORDER BY :naziv"),
 	@NamedQuery(name="findAll", query="SELECT a from ebook order by :orderClause")
 })

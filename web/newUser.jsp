@@ -162,8 +162,8 @@
 	        	<p >Find what you like or choose category you like</p>
 	        	<div id="filtriranje"> -->
 	        	<div class="page-header">
-			        <h1>Change your password</h1>
-			        <p class="lead">Here you can change your password.You have to enter your old password and then 2 times new password</p>
+			        <h1>Users list</h1>
+			        <p class="lead">Here you can see list of all users.You can also add new user or edit/delete existing user.</p>
 			      
 			    </div>
 					

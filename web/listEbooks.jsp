@@ -12,6 +12,14 @@
 		<title>Lista vozila</title>
 		<link href="./listEbooks.css" rel="stylesheet" type="text/css" />
 		<link href="./bootstrap.css" rel="stylesheet" type="text/css" />
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+		
+		<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/i18n/defaults-*.min.js"></script>
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
@@ -170,17 +178,23 @@
 	        	<div class="page-header">
 			        <h1>Bootstrap grid examples</h1>
 			        <p class="lead">Basic grid layouts to get you familiar with building within the Bootstrap grid system.</p>
-			        <select size="1" name="category">
+			        
+			    <form action="./FindCategory" method="post" accept-charset="ISO-8859-1" ">
+			    
+			    
+			   		<select  size="1" name="categorySelect">
+			        	<option value="All">All </option>
 						<c:forEach items="${category}" var="cat">
 							<option value="${cat.name}">${cat.name}</option>
 						</c:forEach>
 					</select>
-			    </div>
+					<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button>
 					
-				</div>
-				
-			
-							
+			    </form>
+			        
+			        
+			    </div>
+										
 				<table >
 					
 					
@@ -189,7 +203,7 @@
 						  <div class="row">
 					        <div id="rowTitle"  class="col-md-2">Title</div>
 					        <div id="rowTitle"  class="col-md-2">Author</div>
-					        <div id="rowTitle"  class="col-md-1">Publication year</div>
+					        <div id="rowTitle"  class="col-md-2">Publication year</div>
 					        <div id="rowTitle"  class="col-md-2">Language</div>
 					    	<div id="rowTitle"  class="col-md-2">Category</div>
 					    	<c:if test="${sessionScope.admin!=null}">
@@ -207,12 +221,12 @@
 							 <div class="row">
          								<div id="rowBook" class="col-md-2">${ebook.title}</div>
 										<div id="rowBook" class="col-md-2">${ebook.author}</div>
-										<div id="rowBook" class="col-md-1">${ebook.year}</div>
+										<div id="rowBook" class="col-md-2">${ebook.year}</div>
 										<div id="rowBook" class="col-md-2">${ebook.language.name}</div>
 										<div id="rowBook" class="col-md-2">${ebook.category.name}</div>
   										<c:if test="${sessionScope.admin!=null}">
   												<div id="rowBook" class="col-md-2">
-  													<a class="btnAR" href="./login.jsp">Add</a>
+  													<a class="btnAR" href="./login.jsp">Edit</a>
   													<a class="btnAR" href="./login.jsp">Remove</a>
   													
   												</div>
@@ -220,27 +234,79 @@
        						 </div>
 						</tr>
 						
-						</c:forEach>	
+						</c:forEach>
+						
+						<c:forEach var="item" items="${ ebooks }">
+							<div class="row">
 					
+						<div class="col-md-4">
+				          <h2><a href="Preview?bookId=${item.id }">
+										${item.title }</a></h2>
+										
+								
+										<p class="info">Author: ${item.author }</p>
+										<p class="info">Year: ${item.year }</p>
+										<p class="info">Language: ${item.language.name }</p>
+										<p class="info">Category: ${item.category.name}</p>
+								
+								
+						  <c:if test="${sessionScope.admin==null}">
+						  <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+						  
+							</c:if>	
+					      <c:if test="${sessionScope.admin!=null}">
+				          <p><a class="btnAR" href="#">Edit</a></p>
+  						  <p><a class="btnAR" href="#">Remove</a></p>
+  						  </c:if>
+				          </div>
+				          	</div>
+				          
+				         </c:forEach>				
+									
+				</table>	
 					
-				</table>
+				</div>
+				<!-- CONTAINER -->
+
+										<script type="text/javascript">
+										
+											  function onlyCategory(name)
+											  { 
+												  
+												  
+												  alert("Kategorija je: " +name);
+												  
+												  
+											  }
+										
+										</script>
 				
 				
+				
+				
+				<script>
+function myFunction() {
+    var x;
+    if (confirm("Press a button!") == true) {
+        x = "You pressed OK!";
+    } else {
+        x = "You pressed Cancel!";
+    }
+    document.getElementById("demo").innerHTML = x;
+}
+</script>
 	      </div>
-       </div>		
 		
 		
 		
+			    <script src="./jquery.js" type="text/javascript"></script>
 		
 		 <script src="./bootstrap.min.js"></script>
 	    <script src="./bootstrap.js"></script>
-	    <script src="./jquery.js" type="text/javascript"></script>
 	
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 	    <script src="./bootstrap.min.js"></script>
-	    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	    <script src="./ie10-viewport-bug-workaround.js"></script>
 		<!-- body -->
 		
 	</body>

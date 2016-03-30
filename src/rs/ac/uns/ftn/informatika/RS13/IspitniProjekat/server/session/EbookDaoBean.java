@@ -2,7 +2,9 @@ package rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 
+import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.Category;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.Ebook;
 
 @Stateless
@@ -11,14 +13,14 @@ public class EbookDaoBean extends GenericDaoBean<Ebook, Integer> implements Eboo
 	
 
 	
-	/*public Ebook findAutomobilByProizvodjac(Category proizvodjac){
+	public Ebook findEbookByCategory(Category cat){
 		Query q = em.createNamedQuery("findAutomobilByProizvodjac");
-		q.setParameter("proizvodjacId", proizvodjac.getPrizvodjacID());
-		q.setParameter("naziv", proizvodjac.getNazivProizvodjaca());
+		q.setParameter("category_id", cat.getCategoryID());
+		q.setParameter("name", cat.getName());
 		Ebook result = (Ebook) q.getSingleResult();
 		return result;
 	}
-
+	/*
 	public Ebook findAll(String orderClause){
 		Query q = em.createNamedQuery("findAll");
 		q.setParameter("orderClause", orderClause);
