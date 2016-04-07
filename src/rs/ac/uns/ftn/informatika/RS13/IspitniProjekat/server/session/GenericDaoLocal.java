@@ -8,8 +8,11 @@ public interface GenericDaoLocal<T, ID extends Serializable> {
 	public Class<T> getEntityType();
 
 	public T findById(ID id);
+	
 
 	public List<T> findAll();
+	
+
 
 	public List<T> findBy(String query);
 

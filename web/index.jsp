@@ -323,6 +323,7 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 	        	can just subscribe to one category.It's your choice,find more,search better..</p>
 	        	<p><a class="btn btn-primary btn-lg" href="./ReadControllerEbooks" role="button">Find your book &raquo;</a></p>
 	      </div>
+	   <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">&times;</span></button>
 	      
 	      
 	<ul class="slides">

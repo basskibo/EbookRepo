@@ -1,8 +1,12 @@
 package rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +16,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "user")
@@ -44,6 +50,10 @@ public class User implements Serializable {
 	
 	@Column(name = "type", unique = false, nullable = false)
 	private String type;
+	
+	
+	@OneToMany(cascade = { ALL }, fetch = LAZY, mappedBy = "user")
+	private Set<Ebook> eBooks = new HashSet<Ebook>();
 	
 	@ManyToOne
 	@JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = true)

@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<jsp:useBean id="user" type="rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.User" scope="request"></jsp:useBean>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -160,38 +161,38 @@
 	        	<div class="page-header">
 			        <h1>Change data</h1>
 			        <p class="lead">Here you can change data.You can enter new first and last name,also you can change password.</p>
-					<c:forEach items = "${users}" var = "u">
+				<%-- 	<c:forEach items = "${user}" var = "u">
 					
 						<p>u.fName </p>
 						<p>u.lName </p>
 						<p>u.username </p>
 						
-					</c:forEach>
+					</c:forEach> --%>
 				</div>
 					
 	
 	<form action="./UpdateControllerKorisnik" method="post" accept-charset="ISO-8859-1" >
-					        		<c:if test="${sessionScope.admin !=null}">
+	
 					        		
 								                	<div class="input-group">
 									    				<span class="input-group-addon">First Name</span>
-									    				<input type="text" class="form-control"  name="fName" value="${sessionScope.admin.firstName}" required>
+									    				<input type="text" class="form-control"  name="fName" value="${user.firstName}" required>
 							  						</div>
 							  						<div class="input-group">
 							  					
 									    				<span  class="input-group-addon">Last Name</span>
-									    				<input type="text"   name= "lName"  class="form-control" value="${sessionScope.admin.lastName}" required>
+									    				<input type="text"   name= "lName"  class="form-control" value="${user.lastName}" required>
 								    				</div>
 								    				<div class="input-group">
 									    				<span class="input-group-addon">Username</span>
-									    				<input type="text" class="form-control" name="username" value="${sessionScope.admin.username}"  required>
+									    				<input type="text" class="form-control" name="username" value="${user.username}"  required>
 									    			</div>
-									                  <input type="hidden" name="userID" value="${sessionScope.admin.userID}">
-												<input type="hidden" name="tLozinka" value="${sessionScope.admin.userPassword}">
+									                  <input type="hidden" name="userID" value="${user.userID}">
+												<input type="hidden" name="tLozinka" value="${user.userPassword}">
 											      					    												                
 								    			<p>If you want to change your password follow this <a href="./PrepareUpdateKorisnikLozinka "> <span class="crveno">link.</span></a> </p>
 							  					<div class="input-group" id="tipDiv">			                	
-												 	<p>Tip korisnika:</p>  
+												 	<p>Tip korisnika je:</p>  
 													
 												<!-- 	<input type="radio" name="administrator" id="admin" value="Administrator" />Administrator
 													<input type="radio" name="subscriber" id="sub" value="Subscriber" />Subscriber <br> 
@@ -233,7 +234,6 @@
 												
 												<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button>
 												
-												</c:if>
 												</form>
 												
 													

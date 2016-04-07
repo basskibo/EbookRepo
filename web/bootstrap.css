@@ -15,6 +15,8 @@ body {
 	background-image: url('http://www.walldevil.com/wallpapers/w02/767326-death-star-minimalistic-simple-background-star-wars.jpg') ;    
     	
 }
+
+
 article,
 aside,
 details,
@@ -1967,6 +1969,12 @@ pre code {
   }
   .col-md-3 {
     width: 25%;
+    
+  }
+   .col-md-3x {
+    width: 25%;
+    margin:30px 40px 10px 0px;
+    
   }
   .col-md-2 {
     width: 16.66666667%;
@@ -3509,6 +3517,7 @@ fieldset[disabled] .btn-link:focus {
   font-size: 18px;
   line-height: 1.3333333;
   border-radius: 6px;
+      margin-top: 10px;
 }
 .btn-sm,
 .btn-group-sm > .btn {
@@ -6855,5 +6864,10 @@ button.close {
   }
 }
 
+
+select{
+	height: 35px;
+    width: 90%;
+}
 
 /*# sourceMappingURL=bootstrap.css.map */

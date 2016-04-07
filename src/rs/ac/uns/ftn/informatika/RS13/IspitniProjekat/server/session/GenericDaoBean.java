@@ -41,6 +41,8 @@ public abstract class GenericDaoBean<T, ID extends Serializable> implements Gene
 		List<T> result = q.getResultList();
 		return result;
 	}
+	
+	
 
 	@SuppressWarnings("unchecked")
 	public List<T> findBy(String query) {

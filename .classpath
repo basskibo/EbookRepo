@@ -16,5 +16,13 @@
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.38-bin.jar"/>
 	<classpathentry kind="lib" path="lib/jboss-common-jdbc-wrapper.jar"/>
 	<classpathentry kind="lib" path="lib/jboss-common-jdbc-wrapper-src.jar"/>
+	<classpathentry kind="lib" path="lucene-analyzers-common-4.0.0.jar"/>
+	<classpathentry kind="lib" path="lucene-core-4.0.0.jar"/>
+	<classpathentry kind="lib" path="lucene-highlighter-4.0.0.jar"/>
+	<classpathentry kind="lib" path="lucene-queryparser-4.0.0.jar"/>
+	<classpathentry kind="lib" path="pdfbox-1.7.1.jar"/>
+	<classpathentry kind="lib" path="poi-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="poi-ooxml-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="poi-scratchpad-3.7-20101029.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

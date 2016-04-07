@@ -26,11 +26,14 @@ public class PrepareUpdateUser2 extends HttpServlet{
 		String userid= null;
 		User korisnik = null;
 		userid = request.getParameter("userID");
+		System.out.println("id: "+userid);
+		System.out.println("pronadjen: "+ korisnikDao.findById(Integer.parseInt(userid)).getUsername());
 		request.setAttribute("user", korisnikDao.findById(Integer.parseInt(userid)));
-		response.sendRedirect(response.encodeRedirectURL("./updateData2.jsp"));
+		getServletContext().getRequestDispatcher("/updateData2.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 }
+

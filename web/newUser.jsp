@@ -11,12 +11,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="./listEbooks.css" rel="stylesheet" type="text/css" />
-	<link href="./listCategory.css" rel="stylesheet" type="text/css" />
 	<link href="./bootstrap.css" rel="stylesheet" type="text/css" />
-	<script src="./jquery.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 		
 	<title>User control</title>
 </head>
@@ -228,6 +224,22 @@
 								</table>
 				
 				
+							
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#newCategory">Create new User</button>
+
+<!-- Modal -->
+<div id="newCategory" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create Category</h4>
+      </div>
+      <div class="modal-body">
+			<c:if test="${sessionScope.admin!=null}">
 				<h2>Add new User</h2>				
 	    		<form action="./CreateControllerKorisnik" method="post" accept-charset="ISO-8859-1" onsubmit="return checkForm(this);">
 					        		<c:if test="${sessionScope.admin !=null}">
@@ -420,11 +432,26 @@
 												
 												<span onClick="check();" class="setType" style="cursor: pointer;" id="setUser">Set type of User</span>
 												<h5>If you choose Subscriber you <span class="crveno">MUST</span> click on the <q>Set type of User</q>button to choose from categories.</h5>
-												
-												<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button>
+												 <div class="modal-footer">
+										        <button type="button" class="dugme" data-dismiss="modal" style="width:90px; margin-right:10px;">Cancel</button>
+										     	<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button>
+										     
+										      </div>
 
 					                </c:if>
 						</form>
+			
+			</c:if>
+
+
+      </div>
+     
+    </div>
+				
+				
+				
+				
+				
 						
 						
 						
@@ -438,14 +465,16 @@
 	</div>
 	 
 	 
-	  <script src="./bootstrap.min.js"></script>
+	 <script src="./bootstrap.min.js"></script>
 	    <script src="./bootstrap.js"></script>
+	    <script src="./jquery.js" type="text/javascript"></script>
 	
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 	    <script src="./bootstrap.min.js"></script>
-	 
-	 
+	    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	    <script src="./ie10-viewport-bug-workaround.js"></script>
+		<!-- body -->
 	 
 
 	

@@ -94,20 +94,6 @@ public class InitBean implements Init {
 		ebookDAO.persist(eb2);
 		ebookDAO.persist(eb3);
 
-/*		Ebook automobil = new Ebook(2015, 300000, "Dizel", "Novi Sad", "kibo@mail.com", 2000, 150, "Automatik", "nema", "U dobrom stanju",model,prozivodjac);
-		Ebook automobil1 = new Ebook(2014, 4200, "Dizel", "Beograd", "kibo@mail.com", 2000, 150, "Manuelni", "full", "U odlicnom stanju",model1,prozivodjac1);
-		Ebook automobil3 = new Ebook(1999, 200000, "Dizel", "Novi Sad", "kibo@mail.com", 2000, 150, "Manuelni", "nema", "Garaziran",model3,prozivodjac3);
-		Ebook automobil4 = new Ebook(2003, 30000, "Butan", "Subotica", "mare@mail.com", 3000, 150, "Manuelni", "nema", "Fale felne",model4,prozivodjac2);
-		Ebook automobil5 = new Ebook(2002, 245000, "Gas", "Indjija", "pera@mail.com", 2500, 1520, "Automatik", "full", "Svecice u kvaru",model5,prozivodjac2);
-		Ebook automobil6 = new Ebook(2007, 245000, "Gas", "Novi Sad", "pera@mail.com", 4000, 1520, "Manuelni", "nema", "Svecice u kvaru",model6,prozivodjac3);
-
-		
-		automobilDAO.persist(automobil);
-		automobilDAO.persist(automobil1);
-		automobilDAO.persist(automobil3);
-		automobilDAO.persist(automobil4);
-		automobilDAO.persist(automobil5);
-		automobilDAO.persist(automobil6);*/
 
 		
 	

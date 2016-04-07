@@ -12,7 +12,8 @@
 	<link href="./listEbooks.css" rel="stylesheet" type="text/css" />
 	<link href="./listCategory.css" rel="stylesheet" type="text/css" />
 	
-	<link href="./bootstrap.css" rel="stylesheet" type="text/css" /><title>All categories</title>
+	<link href="./bootstrap.css" rel="stylesheet" type="text/css" />
+	<title>All categories</title>
 	</head>
 	
 	
@@ -72,13 +73,13 @@
 											            <li class="dropdown">
 											              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
 											              <ul class="dropdown-menu">
-											                <li><a href="./PrepareReadControllerCategory">See all</a></li>
+											               	<li class="dropdown-header">Popular</li>
 											                <li><a href="#">Sci-fi</a></li>
 											                <li><a href="#">Drama</a></li>
 											                <li role="separator" class="divider"></li>
 											                <li class="dropdown-header">See more</li>
-											                <li><a href="#">Epska poezija</a></li>
-											                <li><a href="#">Fantazija</a></li>
+											                <li><a href="./PrepareReadControllerCategory">See all</a></li>
+											              
 											              </ul>
 											            </li>
 											             <li class="dropdown">
@@ -94,12 +95,7 @@
 											          </ul>
 						</div><!--/.nav-collapse -->
 												
-							<!-- 	<a class="dugme" href="./PrepareCreateControllAutomobil" class="tdli" >Ebooks</a>
-								<a class="dugme" href="./PrepareCreateControllerProizvodjac"  class="tdli">Category</a>
-								<a class="dugme" href="./PrepareCreateControllerKorisnik" class="tdli">Users</a>
-								<a class="dugme" href="./PrepereUpdateControllerKorisnik" class="tdli">Change data</a>
-								<a class="dugme" href="./PrepareUpdateKorisnikLozinka" class="tdli">Change Password</a>
-									 -->
+						
 			</c:if>
 			
 			<!-- Meni kada je korisnik ulogovan kao MODERATOR -->
@@ -263,9 +259,20 @@
 			</c:if>
 			
 			
-			
-			
-			 
+			<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#newCategory">Create new Category</button>
+
+<!-- Modal -->
+<div id="newCategory" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create Category</h4>
+      </div>
+      <div class="modal-body">
 			<c:if test="${sessionScope.admin!=null}">
 				<h2>Add new Category</h2>				
 	    		<form action="./CreateControllerCategory" method="post" accept-charset="ISO-8859-1">
@@ -275,14 +282,28 @@
 									    				<span class="input-group-addon">Category Name</span>
 									    				<input type="text" class="form-control"  name="cName" required>
 							  						</div>
-							  					
-								    				<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button>
+							  					 <div class="modal-footer">
+										        <button type="button" class="dugme" data-dismiss="modal" style="width:90px; margin-right:10px;">Cancel</button>
+										     	<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button>
+										     
+										      </div>
 								    										
 			
 									</c:if>
 				</form>
 			
 			</c:if>
+
+
+      </div>
+     
+    </div>
+
+  </div>
+</div>
+			
+			 
+			
 			 
 			 
 			 

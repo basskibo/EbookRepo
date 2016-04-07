@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.Category;
+import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.Ebook;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.CategoryDaoLocal;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.EbookDaoLocal;
 
@@ -20,30 +22,30 @@ public class DeleteControllerAutomobili extends HttpServlet {
 	private static Logger log = Logger.getLogger(DeleteControllerAutomobili.class);
 	
 	@EJB
-	private EbookDaoLocal automobilDao;
+	private EbookDaoLocal ebookDao;
 	
 	@EJB
-	private CategoryDaoLocal proizvodjacDao;
+	private CategoryDaoLocal categoryDao;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	/*		request.setAttribute("automobili", automobilDao.findAll());
-			request.setAttribute("proizvodjaci", proizvodjacDao.findAll());
-			try{
-				String automobilId = null;
-				automobilId = request.getParameter("automobilId");
-				Ebook automobil = automobilDao.findById(Integer.parseInt(automobilId));
-				automobilDao.remove(automobil);
-				
-				getServletContext().getRequestDispatcher("/PrepareCreateControllAutomobil").forward(request, response);
-				
-			}catch (ServletException e) {
-				log.error(e);
-				throw e;
-			} catch (IOException e) {
-				log.error(e);
-				throw e;
-			}*/
+		try{
+			String ebookId = null;
+			ebookId = request.getParameter("ebook_id");
+			Ebook ebook = ebookDao.findById(Integer.parseInt(ebookId));
+			
+			ebookDao.remove(ebook);
+			
+			getServletContext().getRequestDispatcher("/ReadControllerEbooks").forward(request, response);
+			
+			
+			
+		}catch(ServletException e){
+			throw e;
+		}catch (IOException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw e;
+		}
 	}
 	
 	protected void doPost(HttpServletRequest request, 	HttpServletResponse response) throws ServletException, IOException {

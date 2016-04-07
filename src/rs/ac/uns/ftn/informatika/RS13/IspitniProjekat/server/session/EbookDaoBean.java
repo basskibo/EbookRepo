@@ -14,7 +14,8 @@ public class EbookDaoBean extends GenericDaoBean<Ebook, Integer> implements Eboo
 
 	
 	public Ebook findEbookByCategory(Category cat){
-		Query q = em.createNamedQuery("findAutomobilByProizvodjac");
+		System.out.println("Trazi knjigu po kategoriji");
+		Query q = em.createNamedQuery("findEbookByCategory");
 		q.setParameter("category_id", cat.getCategoryID());
 		q.setParameter("name", cat.getName());
 		Ebook result = (Ebook) q.getSingleResult();

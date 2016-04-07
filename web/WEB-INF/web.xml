@@ -116,6 +116,11 @@
       <servlet-name>ReadControllerEbooks</servlet-name>
       <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.ReadControllerEbooks</servlet-class>
    </servlet>
+   
+   <servlet>
+      <servlet-name>FindCategory</servlet-name>
+      <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.FindCategory</servlet-class>
+   </servlet>
 
    <servlet-mapping>
       <servlet-name>LogoutController</servlet-name>
@@ -229,13 +234,19 @@
       <url-pattern>/ReadControllerIndex</url-pattern>
    </servlet-mapping>
    
-      <servlet-mapping>
+   <servlet-mapping>
       <servlet-name>ReadControllerEbooks</servlet-name>
       <url-pattern>/ReadControllerEbooks</url-pattern>
    </servlet-mapping>
    
+   
+    <servlet-mapping>
+      <servlet-name>FindCategory</servlet-name>
+      <url-pattern>/FindCategory</url-pattern>
+   </servlet-mapping>
+   
    <welcome-file-list>
-   		<welcome-file>/login.jsp</welcome-file>
+   		<welcome-file>/index.jsp</welcome-file>
    </welcome-file-list>
    <error-page>
 		<exception-type>
