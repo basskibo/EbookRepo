@@ -121,6 +121,12 @@
       <servlet-name>FindCategory</servlet-name>
       <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.FindCategory</servlet-class>
    </servlet>
+   
+    <servlet>
+      <servlet-name>FindCategoryBooks</servlet-name>
+      <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.FindCategoryBooks</servlet-class>
+   </servlet>
+   
 
    <servlet-mapping>
       <servlet-name>LogoutController</servlet-name>
@@ -243,6 +249,11 @@
     <servlet-mapping>
       <servlet-name>FindCategory</servlet-name>
       <url-pattern>/FindCategory</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+      <servlet-name>FindCategoryBooks</servlet-name>
+      <url-pattern>/FindCategoryBooks</url-pattern>
    </servlet-mapping>
    
    <welcome-file-list>

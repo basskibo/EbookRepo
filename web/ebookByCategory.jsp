@@ -205,6 +205,7 @@
 	</table> --%>
 	
 	<c:forEach var="item" items="${ ebooks }">
+				<c:if test="${item.category.name == category.name }">
 												
 					<%-- 	 <div class="col-sm-4">
 					      <div class="tile blue">
@@ -232,7 +233,7 @@
 					</div>
 					
 					
-				          
+				          </c:if>
 				         </c:forEach>	
 									
 					

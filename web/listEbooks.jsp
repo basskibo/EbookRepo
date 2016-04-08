@@ -12,24 +12,11 @@
 	<head>
 		<title>E-Books</title>
 		<link href="./listEbooks.css" rel="stylesheet" type="text/css" />
+		<link href="./listEbooks.css" rel="stylesheet" type="text/css" />
+		<link href="./listCategory.css" rel="stylesheet" type="text/css" />
 		<link href="./bootstrap.css" rel="stylesheet" type="text/css" />
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
-		
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
-		
-		<!-- (Optional) Latest compiled and minified JavaScript translation files -->
-		
-		<!-- jQuery library -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		
-		<!-- Latest compiled JavaScript -->
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
-		<meta HTTP-EQUIV="Expires" CONTENT="-1">
-		
+			
 		
 	</head>
 	<body>
@@ -65,11 +52,9 @@
 								                <li role="separator" class="divider"></li>
 								                <li class="dropdown-header">See more</li>
 								            	<c:forEach items="${category}" var="cat">
-								            			 <li><a href="./FindCategory?">${cat.name}</a></li>
-								            	
+								            		<li><a href="./FindCategoryBooks?category_id=${cat.categoryID }">${cat.name}</a></li>
 												</c:forEach>
-													<li><a href="#">nesto</a></li>
-													<li><a href="#">nesto2</a></li>
+
 												
 								              </ul>
 								            </li>
@@ -193,8 +178,14 @@
 						</c:forEach>
 					</select>
 					<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; ">Submit</button>
-					
+				
+				
+				<c:if test="${sessionScope.administrator == true}">
+					<!-- Trigger the modal with a button -->
+					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#newUser">Create new Book</button>
+			    </c:if>
 			    </form>
+
 			    
 			
 										
@@ -239,61 +230,175 @@
 						
 						</c:forEach>
 						
+						
+	            <c:if test="${sessionScope.admin == null}">
 						<c:forEach var="item" items="${ ebooks }">
-												
-					<%-- 	 <div class="col-sm-4">
-					      <div class="tile blue">
-					        <h3 class="title" >${item.title }</h3>
-					        <p class="info">Author: ${item.author }</p>
-										<p class="info">Year: ${item.year }</p>
-										<p class="info">Language: ${item.language.name }</p>
-										<p class="info">Category: ${item.category.name}</p>
-					      </div>
-					    </div>  --%>
-					<div class="row1">
-					  <div class="col-sm-6 col-md-3x">
-					    <div class="thumbnail">
-					      <img src="http://res-5.cloudinary.com/cloudinary/image/upload/c_limit,h_540,w_770/eu84dbcuxv7uubiy9q70g.png" alt="...">
-					      <div class="caption">
-					        <h3>${item.title }</h3>
-					          <p class="info">Author: ${item.author }</p>
-										<p class="info">Year: ${item.year }</p>
-										<p class="info">Language: ${item.language.name }</p>
-										<p class="info">Category: ${item.category.name}</p>
-					        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					
-					
-				          
-				         </c:forEach>				
-									
+							<div class="row1">
+							  <div class="col-sm-6 col-md-3x">
+							    <div class="thumbnail">
+							      <img src="http://res-5.cloudinary.com/cloudinary/image/upload/c_limit,h_540,w_770/eu84dbcuxv7uubiy9q70g.png" alt="...">
+							      <div class="caption">
+							        <h3>${item.title }</h3>
+							          <p class="info">Author: ${item.author }</p>
+												<p class="info">Year: ${item.year }</p>
+												<p class="info">Language: ${item.language.name }</p>
+												<p class="info">Category: ${item.category.name}</p>
+							        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+				        </c:forEach>				
+				</c:if>			
 				</table>	
 				
+											
+
+<!-- Modal -->
+<div id="newUser" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create Ebook</h4>
+      </div>
+      <div class="modal-body">
+			<c:if test="${sessionScope.admin!=null}">
+				<h2>Add new book</h2>				
+	    		<form action="./CreateControllerKorisnik" method="post" accept-charset="ISO-8859-1" onsubmit="return checkForm(this);">
+					        		<c:if test="${sessionScope.admin !=null}">
+					        		
+								                	<div class="input-group">
+									    				<span class="input-group-addon">Title</span>
+									    				<input type="text" class="form-control"  name="title" required>
+							  						</div>
+							  						<div class="input-group">
+							  					
+									    				<span  class="input-group-addon">Author</span>
+									    				<input type="text"   name= "author"  class="form-control" required>
+								    				</div>
+								    												                <div class="input-group">
+								    				
+									    				<span class="input-group-addon">Filename</span>
+									    				<input type="text" class="form-control"  name="filename">
+									    			</div>
+									                <div class="input-group">
+								    				
+									    				<span  class="input-group-addon">Mime</span>
+									    				<input type="password"   name= "userPassword" class="form-control"  required>
+													</div>							    												                
+								    			<div class="input-group">
+								    				<span  class="input-group-addon">Year</span>
+								    				<input type="text"   name= "userPassword2" class="form-control"  required>
+							  					</div>
+							  					
+							  					<div class="input-group" id="tipDiv">			                	
+												 	<p>Category:</p>  
+													
+													 
+												<select  size="1" style="height:35px;width:100%;" name="categorySelect" >
+													<c:forEach items="${category}" var="cat">
+														<option value="${cat.name}">${cat.name}</option>
+													</c:forEach>
+												</select>
+																			
+		
+										 <script type="text/javascript">
+										
+											  function checkForm(form)
+											  {
+											    if(form.username.value == "") {
+											      alert("Error: Username cannot be blank!");
+											      form.username.focus();
+											      return false;
+											    }
+											    re = /^\w+$/;
+											    if(!re.test(form.username.value)) {
+											      alert("Error: Username must contain only letters, numbers and underscores!");
+											      form.username.focus();
+											      return false;
+											    }
+											
+											    if(form.userPassword.value != "" && form.userPassword.value == form.userPassword2.value) {
+											      if(form.pwd1.value.length < 6) {
+											        alert("Error: Password must contain at least six characters!");
+											        form.userPassword.focus();
+											        return false;
+											      }
+											      if(form.userPassword.value == form.username.value) {
+											        alert("Error: Password must be different from Username!");
+											        form.userPassword.focus();
+											        return false;
+											      }
+											      re = /[0-9]/;
+											      if(!re.test(form.userPassword.value)) {
+											        alert("Error: password must contain at least one number (0-9)!");
+											        form.pwd1.focus();
+											        return false;
+											      }
+											      re = /[a-z]/;
+											      if(!re.test(form.userPassword.value)) {
+											        alert("Error: password must contain at least one lowercase letter (a-z)!");
+											        form.userPassword.focus();
+											        return false;
+											      }
+											      re = /[A-Z]/;
+											      if(!re.test(form.userPassword.value)) {
+											        alert("Error: password must contain at least one uppercase letter (A-Z)!");
+											        form.userPassword.focus();
+											        return false;
+											      }
+											    } else {
+											      alert("Error: Please check that you've entered and confirmed your password!");
+											      form.userPassword.focus();
+											      return false;
+											    }
+											
+											    alert("You entered a valid password: " + form.userPassword.value);
+											    return true;
+											  }
+										
+										</script>
+													
+										</div>
+												
+												
+									<div class="modal-footer">
+									<button type="button" class="dugme" data-dismiss="modal" style="width:90px; margin-right:10px;">Cancel</button>
+									<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button>
+										     
+										      </div>
+
+					                </c:if>
+						</form>
+			
+			</c:if>
+      </div>
+
+    </div>
+				
+				
+				
+				
+				
+						
+						
+						
+								    
+	    
+	    	</div>
+	    	
+	    	
+	    		    	
+
+	</div>
+	 
 
        
        
-				<nav>
-				  <ul class="pagination">
-				    <li>
-				      <a href="#" aria-label="Previous">
-				        <span aria-hidden="true">&laquo;</span>
-				      </a>
-				    </li>
-				    <li><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-				    <li><a href="#">3</a></li>
-				    <li><a href="#">4</a></li>
-				    <li><a href="#">5</a></li>
-				    <li>
-				      <a href="#" aria-label="Next">
-				        <span aria-hidden="true">&raquo;</span>
-				      </a>
-				    </li>
-				  </ul>
-				</nav>
+			
        
        
        
@@ -324,31 +429,27 @@
 				
 				
 				<script>
-function myFunction() {
-    var x;
-    if (confirm("Press a button!") == true) {
-        x = "You pressed OK!";
-    } else {
-        x = "You pressed Cancel!";
-    }
-    document.getElementById("demo").innerHTML = x;
-}
-</script>
+					function myFunction() {
+					    var x;
+					    if (confirm("Press a button!") == true) {
+					        x = "You pressed OK!";
+					    } else {
+					        x = "You pressed Cancel!";
+					    }
+					    document.getElementById("demo").innerHTML = x;
+				}
+				</script>
 	      </div>
 		
 		
-	  <script src="./jquery.js" type="text/javascript"></script>
-
-		
-		<script src="./slider.js"></script>
-		
-	    <script src="./bootstrap.min.js"></script>
+	  	<script src="./bootstrap.min.js"></script>
 	    <script src="./bootstrap.js"></script>
-	
+	    <script src="./jquery.js" type="text/javascript"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 	    <script src="./bootstrap.min.js"></script>
 	    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	    <script src="./ie10-viewport-bug-workaround.js"></script>
 		
 	</body>
 </html>

@@ -1107,8 +1107,8 @@ a {
 }
 a:hover,
 a:focus {
-  color: #23527c;
-  text-decoration: underline;
+  background: #fed142;
+  text-decoration: none;
 }
 a:focus {
   outline: thin dotted;
@@ -1230,7 +1230,7 @@ h3,
 .h3 {
   margin-top: 20px;
   margin-bottom: 10px;
-  color:#c0c0c0;
+  color:#990000;
 }
 h1 small,
 .h1 small,

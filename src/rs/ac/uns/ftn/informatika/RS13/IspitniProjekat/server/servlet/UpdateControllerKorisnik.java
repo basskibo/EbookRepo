@@ -77,6 +77,8 @@ public class UpdateControllerKorisnik extends HttpServlet {
 			response.sendRedirect(response.encodeURL("./uspesno.jsp"));
 			
 		}catch (IOException e) {
+			response.sendRedirect(response.encodeURL("./wrong.jsp"));
+
 			log.error(e);
 			throw e;
 		}

@@ -194,9 +194,9 @@
 						  <div class="row">
 					        <div id="rowTitle"  class="col-md-1">Number</div>
 					    
-					    	<div id="rowTitle"  class="col-md-2">Category</div>
+					    	<div id="rowTitle"  class="col-md-3">Category</div>
 					    	<c:if test="${sessionScope.admin!=null}">
-  									<div id="rowTitle"  class="col-md-2">Change/Remove</div>
+  									<div id="rowTitle"  class="col-md-2 ">Change/Remove</div>
 						
 							</c:if>	
 					        <c:if test="${sessionScope.admin ==null}">
@@ -214,7 +214,7 @@
 										<div id="rowBook" class="col-md-1">
 											<c:out value="${i}"/>.
 										</div>
-										<div id="rowBook" class="col-md-2">${cat.name}</div>
+										<div id="rowBook" class="col-md-3">${cat.name}</div>
 										
   										<c:if test="${sessionScope.admin!=null}">
   												<div id="rowBook" class="col-md-2">
@@ -225,7 +225,7 @@
 										</c:if>	
 					        <c:if test="${sessionScope.admin ==null}">
 										<div id="rowBook" class="col-md-2">
-											<a class="btnAR"  href="#">See more</a>
+											<a class="btnAR" name="categorySelect" href="./FindCategoryBooks?category_id=${cat.categoryID }">See all ${cat.name}</a>
 										</div>
 							</c:if>
 							
@@ -234,22 +234,22 @@
 						</tr>
 						
 						</c:forEach>	
-					
+		
 					
 				</table>
 				
 				
 			<c:if test="${sessionScope.admin==null}">
-				
+				<h2>Currently available categories</h2>
 				<c:forEach items = "${category}" var = "cat">
 					
 				      <!-- Example row of columns -->
-				      <div class="row">
-				        <div class="col-md-4">
+				      <div class="row1">
+				        <div class="col-md-2" style="margin:10px 10px 10px 0px;">
 				              	<img src="http://vectyr.com/wp-content/uploads/2012/12/BookCover5_5x8_5_BW_240.jpg" width="100" height="100"> 
 				        
-				          <h2>${cat.name}</h2>
-				          <p id="printNameP">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+				          <h3>${cat.name}</h3>
+				          <p id="printNameP">You can find more about ${cat.name } if you click button below. </p>
 				          <p><a class="btn btn-default" href="./login.jsp" role="button">View details &raquo;</a></p>
 				        </div>
 				    
@@ -258,49 +258,53 @@
 				</c:forEach>
 			</c:if>
 			
+			<c:if test="${sessionScope.administrator==true}">	
 			
-			<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#newCategory">Create new Category</button>
-
-<!-- Modal -->
-<div id="newCategory" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Create Category</h4>
-      </div>
-      <div class="modal-body">
-			<c:if test="${sessionScope.admin!=null}">
-				<h2>Add new Category</h2>				
-	    		<form action="./CreateControllerCategory" method="post" accept-charset="ISO-8859-1">
-					        		<c:if test="${sessionScope.admin !=null}">
-					        		
-								                	<div class="input-group">
-									    				<span class="input-group-addon">Category Name</span>
-									    				<input type="text" class="form-control"  name="cName" required>
-							  						</div>
-							  					 <div class="modal-footer">
-										        <button type="button" class="dugme" data-dismiss="modal" style="width:90px; margin-right:10px;">Cancel</button>
-										     	<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button>
-										     
-										      </div>
-								    										
-			
-									</c:if>
-				</form>
-			
+				<!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#newCategory">Create new Category</button>
 			</c:if>
-
-
-      </div>
-     
-    </div>
-
-  </div>
-</div>
+			
+			
+			
+			<!-- Modal -->
+			<div id="newCategory" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+			
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Create Category</h4>
+			      </div>
+			      <div class="modal-body">
+						<c:if test="${sessionScope.admin!=null}">
+							<h2>Add new Category</h2>				
+				    		<form action="./CreateControllerCategory" method="post" accept-charset="ISO-8859-1">
+								        		<c:if test="${sessionScope.admin !=null}">
+								        		
+											                	<div class="input-group">
+												    				<span class="input-group-addon">Category Name</span>
+												    				<input type="text" class="form-control"  name="cName" required>
+										  						</div>
+										  					 <div class="modal-footer">
+													        <button type="button" class="dugme" data-dismiss="modal" style="width:90px; margin-right:10px;">Cancel</button>
+													     	<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button>
+													     
+													      </div>
+											    										
+						
+												</c:if>
+							</form>
+						
+						</c:if>
+			
+			
+			      </div>
+			     
+			    </div>
+			
+			  </div>
+			</div>
 			
 			 
 			
