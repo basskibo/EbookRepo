@@ -165,7 +165,6 @@
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-	<h1>Knjige neke</h1>
 	<%-- <table>
 	<c:forEach var="item" items="${ ebooks }">
 	
@@ -203,11 +202,11 @@
 				         
 				        
 	</table> --%>
-	
+	<%-- 
 	<c:forEach var="item" items="${ ebooks }">
 				<c:if test="${item.category.name == category.name }">
 												
-					<%-- 	 <div class="col-sm-4">
+						 <div class="col-sm-4">
 					      <div class="tile blue">
 					        <h3 class="title" >${item.title }</h3>
 					        <p class="info">Author: ${item.author }</p>
@@ -215,7 +214,7 @@
 										<p class="info">Language: ${item.language.name }</p>
 										<p class="info">Category: ${item.category.name}</p>
 					      </div>
-					    </div>  --%>
+					    </div> 
 					<div class="row1">
 					  <div class="col-sm-6 col-md-3x">
 					    <div class="thumbnail">
@@ -235,7 +234,64 @@
 					
 				          </c:if>
 				         </c:forEach>	
+									 --%>
+									 
+									 
+									 
+									 
+									 
+									 
+									 
+									 
+									   <div class="jumbotron">
+	      <div class="container">
+	       <!--  <h1>List of ebooks</h1>
+	        	<p >Find what you like or choose category you like</p>
+	        	<div id="filtriranje"> -->
+	        	<div class="page-header">
+			        <h1>List of all  ${category.name } books</h1>
+			      
+
+						
+						
+						<c:forEach var="item" items="${ ebooks }">
+								<c:if test="${item.category.name == category.name }">
+						
+							  <div class="col-md-4">
+							    <div class="thumbnail">
+<!-- 							      <img src="http://res-5.cloudinary.com/cloudinary/image/upload/c_limit,h_540,w_770/eu84dbcuxv7uubiy9q70g.png" alt="...">
+ -->							      <div data-toggle="collapse" data-target="#demo${item.id } class="caption">
+							        		<h3>${item.title }</h3>
+							          			
+  
+							      		</div>
 									
+									<button class="btn btn-default" data-toggle="collapse" data-target="#demo${item.id }">More details</button>
+
+<!-- 							        <p><a href="#" class="btn btn-primary" role="button">See more</a> 
+		 -->							        <a href="#" class="btn btn-default" role="button">Download</a></p>
+									        <!-- DODATI DA SAMO SUBSCRIBER TE VRSTE MOZE DA DOWNLOADUJE -->
+									      <div id="demo${item.id }" class="collapse">
+												<p class="info"><b>Author:</b> ${item.author }</p>
+												<p class="info"><b>Year:</b> ${item.year }</p>
+												<p class="info"><b>Language:</b> ${item.language.name }</p>
+												<p class="info"><b>Category:</b> ${item.category.name}</p>
+									</div>
+							    </div>
+							  </div>
+							</c:if>
+				        </c:forEach>				
+
+				
+								    
+	    
+	    	</div>
+
+	</div>
+	 
+   
+					
+				</div>
 					
 </body>
 </html>

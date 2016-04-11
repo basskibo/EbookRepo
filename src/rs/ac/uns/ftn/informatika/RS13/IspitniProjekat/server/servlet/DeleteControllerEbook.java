@@ -16,10 +16,10 @@ import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.CategoryDao
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.EbookDaoLocal;
 
 
-public class DeleteControllerAutomobili extends HttpServlet {
+public class DeleteControllerEbook extends HttpServlet {
 	
 	private static final long serialVersionUID = -6495686002669396L;
-	private static Logger log = Logger.getLogger(DeleteControllerAutomobili.class);
+	private static Logger log = Logger.getLogger(DeleteControllerEbook.class);
 	
 	@EJB
 	private EbookDaoLocal ebookDao;

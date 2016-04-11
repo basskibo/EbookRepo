@@ -32,8 +32,8 @@
    </servlet>
        
    <servlet>
-      <servlet-name>DeleteControllerAutomobili</servlet-name>
-      <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.DeleteControllerAutomobili</servlet-class>
+      <servlet-name>DeleteControllerEbook</servlet-name>
+      <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.DeleteControllerEbook</servlet-class>
    </servlet>
     
    <servlet>
@@ -103,8 +103,8 @@
    </servlet>
    
    <servlet>
-      <servlet-name>CreateControllerAutomobil</servlet-name>
-      <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.CreateControllerAutomobil</servlet-class>
+      <servlet-name>CreateControllerEbook</servlet-name>
+      <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.CreateControllerEbook</servlet-class>
    </servlet>
    
    <servlet>
@@ -127,15 +127,32 @@
       <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.FindCategoryBooks</servlet-class>
    </servlet>
    
+   
+   
+    <servlet>
+      <servlet-name>PrepareUpdateCategory</servlet-name>
+      <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.PrepareUpdateCategory</servlet-class>
+   </servlet>
+   
+     <servlet>
+      <servlet-name>UpdateControllerCategory</servlet-name>
+      <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.UpdateControllerCategory</servlet-class>
+   </servlet>
+   
 
+   <servlet>
+      <servlet-name>PrepareUpdateEbook</servlet-name>
+      <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.PrepareUpdateEbook</servlet-class>
+   </servlet>
+   
    <servlet-mapping>
       <servlet-name>LogoutController</servlet-name>
       <url-pattern>/LogoutController</url-pattern>
    </servlet-mapping>
    
    <servlet-mapping>
-      <servlet-name>DeleteControllerAutomobili</servlet-name>
-      <url-pattern>/DeleteControllerAutomobili</url-pattern>
+      <servlet-name>DeleteControllerEbook</servlet-name>
+      <url-pattern>/DeleteControllerEbook</url-pattern>
    </servlet-mapping>  
       
     <servlet-mapping>
@@ -216,8 +233,8 @@
    </servlet-mapping>
    
     <servlet-mapping>
-      <servlet-name>CreateControllerAutomobil</servlet-name>
-      <url-pattern>/CreateControllerAutomobil</url-pattern>
+      <servlet-name>CreateControllerEbook</servlet-name>
+      <url-pattern>/CreateControllerEbook</url-pattern>
    </servlet-mapping>
       
     <servlet-mapping>
@@ -254,6 +271,21 @@
    <servlet-mapping>
       <servlet-name>FindCategoryBooks</servlet-name>
       <url-pattern>/FindCategoryBooks</url-pattern>
+   </servlet-mapping>
+   
+    <servlet-mapping>
+      <servlet-name>PrepareUpdateCategory</servlet-name>
+      <url-pattern>/PrepareUpdateCategory</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+      <servlet-name>UpdateControllerCategory</servlet-name>
+      <url-pattern>/UpdateControllerCategory</url-pattern>
+   </servlet-mapping>
+   
+      <servlet-mapping>
+      <servlet-name>PrepareUpdateEbook</servlet-name>
+      <url-pattern>/PrepareUpdateEbook</url-pattern>
    </servlet-mapping>
    
    <welcome-file-list>

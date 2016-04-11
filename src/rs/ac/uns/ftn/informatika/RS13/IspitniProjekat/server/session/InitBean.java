@@ -57,6 +57,14 @@ public class InitBean implements Init {
 		kat112.setName("Romantic");
 		kat112 = categoryDao.persist(kat112);
 		
+		Category kat1122 = new Category();
+		kat1122.setName("Epic");
+		kat1122 = categoryDao.persist(kat1122);
+		
+		Category kat9 = new Category();
+		kat9.setName("Education");
+		kat9 = categoryDao.persist(kat9);
+		
 		User korisnik = new User("Bojan", "Jagetic", "kibo", "123","administrator");
 		korisnikDAO.persist(korisnik);
 		User korisnik0 = new User("Teodora", "Lepojevic", "tea", "123","administrator");
@@ -69,7 +77,8 @@ public class InitBean implements Init {
 		korisnikDAO.persist(korisnik3);
 		User korisnik4 = new User("Srdjan", "Radojicic", "cipi", "123", "subscriber",kat11);
 		korisnikDAO.persist(korisnik4);
-		
+		User korisnik41 = new User("Marko", "Markovic", "mare", "123", "subscriber",kat9);
+		korisnikDAO.persist(korisnik41);
 		
 		
 		Language l1 = new Language();
@@ -77,7 +86,7 @@ public class InitBean implements Init {
 		languageDao.persist(l1);
 		
 		Language l2 = new Language();
-		l2.setName("Serbian");
+		l2.setName("Serbian Latin");
 		languageDao.persist(l2);
 		
 		Language l3 = new Language();
@@ -85,14 +94,28 @@ public class InitBean implements Init {
 		languageDao.persist(l3);
 		
 		
+		Language l4 = new Language();
+		l4.setName("German");
+		languageDao.persist(l4);
+		
+		Language l5 = new Language();
+		l5.setName("Serbian Cyrilic");
+		languageDao.persist(l5);
+		
+		Language l6 = new Language();
+		l6.setName("French");
+		languageDao.persist(l6);
+		
 		Ebook eb1 = new Ebook("Zagor", "Bonelli", "strip veseli", 1986, "Zagor strip", "pdf", l1, kat1);
 		Ebook eb2 = new Ebook("Mister No", "Bonelli", "veselicetvrtak", 1989, "mrNo strip", "pdf", l3, kat1);
 		Ebook eb3 = new Ebook("Star Wars", "George Lucas", "lucasart", 1989, "mrNo strip", "pdf", l3, kat2);
+		Ebook eb4 = new Ebook("Java for dummies", "Some guy", "lucasart", 2010, "java", "pdf", l4, kat9);
 
 		
 		ebookDAO.persist(eb1);
 		ebookDAO.persist(eb2);
 		ebookDAO.persist(eb3);
+		ebookDAO.persist(eb4);
 
 
 		

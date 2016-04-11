@@ -197,7 +197,7 @@
 					    	<div id="rowTitle"  class="col-md-3">Category</div>
 					    	<c:if test="${sessionScope.admin!=null}">
   									<div id="rowTitle"  class="col-md-2 ">Change/Remove</div>
-						
+						 		
 							</c:if>	
 					        <c:if test="${sessionScope.admin ==null}">
 					        
@@ -218,14 +218,13 @@
 										
   										<c:if test="${sessionScope.admin!=null}">
   												<div id="rowBook" class="col-md-2">
-  													<a class="btnAR"  href="./login.jsp">Edit</a>
-  													<a class="btnAR" href="./DeleteControllerCategory?category_id=${cat.categoryID }">Remove</a>
-  													
-  												</div>
+  													<a class="btnAR"  href="./PrepareUpdateCategory?category_id=${cat.categoryID }">Edit</a>
+   													<a class="btnAR" href="./DeleteControllerCategory?category_id=${cat.categoryID }">Remove</a>
+ 												</div>
 										</c:if>	
 					        <c:if test="${sessionScope.admin ==null}">
 										<div id="rowBook" class="col-md-2">
-											<a class="btnAR" name="categorySelect" href="./FindCategoryBooks?category_id=${cat.categoryID }">See all ${cat.name}</a>
+											<a class="btnAR" name="categorySelect" href="./FindCategoryBooks?category_id=${cat.categoryID }">See all</a>
 										</div>
 							</c:if>
 							
@@ -307,7 +306,25 @@
 			</div>
 			
 			 
-			
+			<div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+			    <div class="modal-dialog modal-sm">
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+			          <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+			        </div>
+			        <div class="modal-body">
+			          <div class="modalMsg"><p>Are you sure want to remove item ?</p></div>
+			          <div class="actionsBtns">
+			        	<a class="btn btn-default" href="./DeleteControllerCategory?category_id=${cat.categoryID }">Yes</a>
+			          
+<%-- 			            <button onclick="./DeleteControllerCategory?category_id=${cat.categoryID }" class="btn btn-default" ng-click="deleteItem()" data-dismiss="modal">Yes</button>
+ --%>			            <button class="btn btn-default" data-dismiss="modal">No</button>
+			          </div>
+			        </div>
+			      </div>
+			    </div>
+  			</div><!--/modal-->
 			 
 			 
 			 
@@ -317,6 +334,15 @@
 				
 	      </div>
        </div>		
+       <script>
+       	function neka(cat){
+       		confirm('Confirm delete');
+       		if(confirm){
+       			alert("yes je izabran");
+       		}
+       		alert(cat);
+       	}
+       </script>
 		
 		 <script src="./bootstrap.min.js"></script>
 	    <script src="./bootstrap.js"></script>

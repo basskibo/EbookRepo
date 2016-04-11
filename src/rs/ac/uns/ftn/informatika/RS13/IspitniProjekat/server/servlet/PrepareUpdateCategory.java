@@ -29,8 +29,8 @@ public class PrepareUpdateCategory extends HttpServlet {
 			String catId =null;
 			catId = request.getParameter("category_id");
 			Category cat = categoryDao.findById(Integer.parseInt(catId));
-			
-			getServletContext().getRequestDispatcher("/PrepareReadControllerCategory").forward(request, response);
+			request.setAttribute("category", cat);
+			getServletContext().getRequestDispatcher("/updateCategory.jsp").forward(request, response);
 			
 			
 			

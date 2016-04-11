@@ -31,13 +31,13 @@ public class ReadControllerEbooks extends HttpServlet {
 	private CategoryDaoLocal categoryDao;
 	
 	@EJB
-	private LanguageDaoLocal komentarDao;
+	private LanguageDaoLocal languageDao;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 			request.setAttribute("ebooks", ebookDao.findAll());
 			request.setAttribute("category", categoryDao.findAll());
-
+			request.setAttribute("languages", languageDao.findAll());
 			getServletContext().getRequestDispatcher("/listEbooks.jsp").forward(request, response);
 		
 		}

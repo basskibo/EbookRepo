@@ -5,6 +5,7 @@
 
 <jsp:useBean id="ebooks" type="java.util.List" scope="request"></jsp:useBean>
 <jsp:useBean id="category" type="java.util.List" scope="request"></jsp:useBean>
+<jsp:useBean id="languages" type="java.util.List" scope="request"></jsp:useBean>
 
 <fmt:setBundle basename="messages.messages"/>
 
@@ -220,8 +221,8 @@
 										<div id="rowBook" class="col-md-2">${ebook.category.name}</div>
   										<c:if test="${sessionScope.admin!=null}">
   												<div id="rowBook" class="col-md-2">
-  													<a class="btnAR" href="./login.jsp">Edit</a>
-  													<a class="btnAR" href="./DeleteControllerAutomobili?ebook_id=${ebook.id }">Delete</a>
+  													<a class="btnAR" href="./PrepareUpdateEbook?ebook_id=${ebook.id }">Edit</a>
+  													<a class="btnAR" href="./DeleteControllerEbook?ebook_id=${ebook.id }">Delete</a>
   													
   												</div>
 										</c:if>								
@@ -233,21 +234,28 @@
 						
 	            <c:if test="${sessionScope.admin == null}">
 						<c:forEach var="item" items="${ ebooks }">
-							<div class="row1">
-							  <div class="col-sm-6 col-md-3x">
+							  <div class="col-md-4">
 							    <div class="thumbnail">
-							      <img src="http://res-5.cloudinary.com/cloudinary/image/upload/c_limit,h_540,w_770/eu84dbcuxv7uubiy9q70g.png" alt="...">
-							      <div class="caption">
-							        <h3>${item.title }</h3>
-							          <p class="info">Author: ${item.author }</p>
+<!-- 							      <img src="http://res-5.cloudinary.com/cloudinary/image/upload/c_limit,h_540,w_770/eu84dbcuxv7uubiy9q70g.png" alt="...">
+ -->							      <div data-toggle="collapse" data-target="#demo${item.id } class="caption">
+							        		<h3>${item.title }</h3>
+							          			
+  
+							      		</div>
+									
+									<button class="btn btn-default" data-toggle="collapse" data-target="#demo${item.id }">More details</button>
+
+<!-- 							        <p><a href="#" class="btn btn-primary" role="button">See more</a> 
+ -->							        <a href="#" class="btn btn-default" role="button">Download</a></p>
+							        <!-- DODATI DA SAMO SUBSCRIBER TE VRSTE MOZE DA DOWNLOADUJE -->
+							      <div id="demo${item.id }" class="collapse">
+												<p class="info">Author: ${item.author }</p>
 												<p class="info">Year: ${item.year }</p>
 												<p class="info">Language: ${item.language.name }</p>
 												<p class="info">Category: ${item.category.name}</p>
-							        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-							      </div>
+									</div>
 							    </div>
 							  </div>
-							</div>
 				        </c:forEach>				
 				</c:if>			
 				</table>	
@@ -267,8 +275,9 @@
       <div class="modal-body">
 			<c:if test="${sessionScope.admin!=null}">
 				<h2>Add new book</h2>				
-	    		<form action="./CreateControllerKorisnik" method="post" accept-charset="ISO-8859-1" onsubmit="return checkForm(this);">
-					        		<c:if test="${sessionScope.admin !=null}">
+	    		<form action="./CreateControllerEbook" method="post" accept-charset="ISO-8859-1" >
+<!-- 	    									onsubmit="return checkForm(this);"
+ -->					        		<c:if test="${sessionScope.admin !=null}">
 					        		
 								                	<div class="input-group">
 									    				<span class="input-group-addon">Title</span>
@@ -279,31 +288,45 @@
 									    				<span  class="input-group-addon">Author</span>
 									    				<input type="text"   name= "author"  class="form-control" required>
 								    				</div>
-								    												                <div class="input-group">
+								    				 <div class="input-group">
 								    				
 									    				<span class="input-group-addon">Filename</span>
-									    				<input type="text" class="form-control"  name="filename">
+									    				<input type="file" class="form-control"  name="filename">
 									    			</div>
-									                <div class="input-group">
-								    				
-									    				<span  class="input-group-addon">Mime</span>
-									    				<input type="password"   name= "userPassword" class="form-control"  required>
-													</div>							    												                
+									               						    												                
 								    			<div class="input-group">
 								    				<span  class="input-group-addon">Year</span>
-								    				<input type="text"   name= "userPassword2" class="form-control"  required>
+								    				<input type="number"   name= "year" class="form-control"  required>
 							  					</div>
 							  					
 							  					<div class="input-group" id="tipDiv">			                	
-												 	<p>Category:</p>  
+												 	<p>Mime Type:</p>  	 
+												<select  size="1" style="height:35px;width:100%;" name="mimeSelect" >
+														<option value="pdf">PDF</option>
+														<option value="pdf">PPT</option>
+														<option value="pdf">ODP</option>
+														
 													
-													 
+												</select>						
+												</div>
+							  					
+							  					<div class="input-group" id="tipDiv">			                	
+												 	<p>Language:</p>  	 
+												<select  size="1" style="height:35px;width:100%;" name="langSelect" >
+													<c:forEach items="${languages}" var="lang">
+														<option value="${lang.languageID}">${lang.name}</option>
+													</c:forEach>
+												</select>						
+												</div>
+												
+							  					<div class="input-group" id="tipDiv">			                	
+												 	<p>Category:</p>  	 
 												<select  size="1" style="height:35px;width:100%;" name="categorySelect" >
 													<c:forEach items="${category}" var="cat">
-														<option value="${cat.name}">${cat.name}</option>
+														<option value="${cat.categoryID}">${cat.name}</option>
 													</c:forEach>
-												</select>
-																			
+												</select>						
+												</div>
 		
 										 <script type="text/javascript">
 										
@@ -362,7 +385,6 @@
 										
 										</script>
 													
-										</div>
 												
 												
 									<div class="modal-footer">
@@ -380,47 +402,18 @@
     </div>
 				
 				
-				
-				
-				
-						
-						
-						
 								    
 	    
 	    	</div>
-	    	
-	    	
-	    		    	
 
 	</div>
 	 
-
-       
-       
-			
-       
-       
-       
-       
-       
+   
 					
 				</div>
 				<!-- CONTAINER -->
 
-										<script type="text/javascript">
-										
-											  function onlyCategory(name)
-											  { 
-												  
-												  
-												  alert("Kategorija je: " +name);
-												  
-												  
-											  }
-										
-										</script>
-				
+									
 				
 				
 				

@@ -28,8 +28,8 @@
 					    				<span  class="input-group-addon">Password</span>
 					    				<input type="password"  id="userPassword" name= "userPassword"  class="form-control" >
 				  					</div>
-				  
-								                	<button id="submit" type="submit" class="btn-success" style="width:90px">Submit</button>
+				  					
+								                	<button id="submit" type="submit" class="btn btn-success" style="width:90px">Submit</button>
 				                	
 				                	
 				                	
