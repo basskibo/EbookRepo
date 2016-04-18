@@ -176,9 +176,10 @@
 			      </div>
 			      <div class="modal-body">
 						<c:if test="${sessionScope.admin!=null}">
-				    		<form action="./CreateControllerEbook" method="post" accept-charset="ISO-8859-1" >
+				    		<form action="./UpdateControllerAutomobili" method="post" accept-charset="ISO-8859-1" >
 <!-- 	    									onsubmit="return checkForm(this);"
  -->					        		<c:if test="${sessionScope.admin !=null}">
+					        						<input type="hidden" class="form-control"  name="ebookID" value="${ebook.id}" >
 					        		
 								                	<div class="input-group">
 									    				<span class="input-group-addon">Title</span>
@@ -210,25 +211,23 @@
 												</select>						
 												</div>
 							  					
-							  					<div class="input-group" id="tipDiv">			                	
+							  				<div class="input-group" id="l">			                	
 												 	<p>Language:</p>  	 
 												<select  size="1" style="height:35px;width:100%;" name="langSelect" >
 													<c:forEach items="${language}" var="lang">
-														<option value="${lang.languageID}">${ebook.language.name}</option>
 														<option value="${lang.languageID}">${lang.name}</option>
 													</c:forEach>
 												</select>						
 												</div>
 												
-							  					<div class="input-group" id="tipDiv">			                	
+							  					<div class="input-group" id=",">			                	
 												 	<p>Category:</p>  	 
 												<select  size="1" style="height:35px;width:100%;" name="categorySelect" >
 													<c:forEach items="${category}" var="cat">
-														<option value="${cat.categoryID}">${ebook.category.name}</option>
+														<option value="${cat.categoryID}">${cat.name}</option>
 													</c:forEach>
 												</select>						
 												</div>
-		
 										
 												
 												

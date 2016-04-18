@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.Ebook;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.EbookDaoLocal;
-
+import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.LanguageDaoLocal;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.CategoryDaoLocal;
 
 public class UpdateControllerAutomobili extends HttpServlet {
@@ -20,138 +20,103 @@ public class UpdateControllerAutomobili extends HttpServlet {
 	private static Logger log = Logger.getLogger(UpdateControllerAutomobili.class);
 	
 	@EJB
-	private EbookDaoLocal automobilDAO;
+	private EbookDaoLocal ebookDao;
 	
 	@EJB
-	private CategoryDaoLocal proizvodjacDAO;
+	private CategoryDaoLocal categoryDao;
 	
+	@EJB
+	private LanguageDaoLocal languageDao;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		request.setAttribute("automobili", automobilDAO.findAll());
-		request.setAttribute("proizvodjaci", proizvodjacDAO.findAll());
-		request.setAttribute("modeli", modelDAO.findAll());
+		request.setAttribute("ebooks", ebookDao.findAll());
+		request.setAttribute("category", categoryDao.findAll());
+		request.setAttribute("language", languageDao.findAll());
 		
 		try{
 			
-			String automobilId = null;
-			Integer godinaProizvodnje = null;
-			Integer kilometraza = null;
-			String gorivo = null;
-			String mesto = null;
-			String kontakt = null;
-			Integer kubikaza = null;
-			Integer snaga = null;
-			String menjac = null;
-			String oprema = null;
-			String opisVOzila = null;
-			Integer proizvodjacID = null;
-			Integer modelID = null;
+			String ebookID = null;
+			String title = null;
+			String author = null;
+			String filename = null;
+			Integer year = null;
+			String mimeSelect = null;
+			Integer langSelect = null;
+			Integer categorySelect = null;
 			
-			automobilId = request.getParameter("id");
-			System.out.println(request.getParameter("id"));
 			
-			if((request.getParameter("godinaProizvodnje")!=null) && (!"".equals(request.getParameter("godinaProizvodnje")))){
-				godinaProizvodnje = new Integer(request.getParameter("godinaProizvodnje"));
+			ebookID = request.getParameter("ebookID");
+			System.out.println(request.getParameter("ebookID"));
+			
+			if((request.getParameter("title")!=null) && (!"".equals(request.getParameter("title")))){
+				title = request.getParameter("title");
 			}	
-			if((request.getParameter("kilometraza")!=null) && (!"".equals(request.getParameter("kilometraza")))){
-				kilometraza = new Integer(request.getParameter("kilometraza"));
+			if((request.getParameter("author")!=null) && (!"".equals(request.getParameter("author")))){
+				author = request.getParameter("author");
 			}
 			
-			if((request.getParameter("gorivo")!=null) && (!"".equals(request.getParameter("gorivo")))){
-				gorivo = request.getParameter("gorivo");
+			if((request.getParameter("filename")!=null) && (!"".equals(request.getParameter("filename")))){
+				filename = request.getParameter("filename");
 			}
 			
-			if((request.getParameter("mesto")!=null) && (!"".equals(request.getParameter("mesto")))){
-				mesto = request.getParameter("mesto");
+		
+			
+			if((request.getParameter("year")!=null) && (!"".equals(request.getParameter("year")))){
+				year = new Integer(request.getParameter("year"));
 			}
 			
-			if((request.getParameter("kontakt")!=null) && (!"".equals(request.getParameter("kontakt")))){
-				kontakt = request.getParameter("kontakt");
+			if((request.getParameter("mimeSelect")!=null) && (!"".equals(request.getParameter("mimeSelect")))){
+				mimeSelect = request.getParameter("mimeSelect").toString();
 			}
 			
-			if((request.getParameter("kubikaza")!=null) && (!"".equals(request.getParameter("kubikaza")))){
-				kubikaza = new Integer(request.getParameter("kubikaza"));
+			if((request.getParameter("langSelect")!=null) && (!"".equals(request.getParameter("langSelect")))){
+				langSelect = new Integer(request.getParameter("langSelect"));
 			}
 			
-			if((request.getParameter("snaga")!=null) && (!"".equals(request.getParameter("snaga")))){
-				snaga = new Integer(request.getParameter("snaga"));
+			if((request.getParameter("categorySelect")!=null) && (!"".equals(request.getParameter("categorySelect")))){
+				categorySelect = new Integer(request.getParameter("categorySelect"));
 			}
 			
-			if((request.getParameter("menjac")!=null) && (!"".equals(request.getParameter("menjac")))){
-				menjac = request.getParameter("menjac");
-			}
 			
-			if((request.getParameter("oprema")!=null) && (!"".equals(request.getParameter("oprema")))){
-				oprema = request.getParameter("oprema");
-			}
-			
-			if((request.getParameter("opis")!=null) && (!"".equals(request.getParameter("opis")))){
-				opisVOzila = request.getParameter("opis");
-			}
-			if((request.getParameter("proizvodjac")!=null) && (!"".equals(request.getParameter("proizvodjac")))){
-				proizvodjacID = new Integer(request.getParameter("proizvodjac"));
-			}
-			
-			if((request.getParameter("model")!=null) && (!"".equals(request.getParameter("model")))){
-				modelID = new Integer(request.getParameter("model"));
-			}
 
-			if ((automobilId != null) && (!automobilId.equals(""))) {
-				Ebook automobil = new Ebook();
-				automobil.setId(new Integer(automobilId));
+			if ((ebookID != null) && (!ebookID.equals(""))) {
+				Ebook ebook = new Ebook();
+				ebook.setId(new Integer(ebookID));
 				
-				if(godinaProizvodnje != null){
-					automobil.setGodinaProizvodnje(godinaProizvodnje);
+				if(title != null){
+					ebook.setTitle(title);
 				}
 				
-				if(kilometraza != null){
-					automobil.setKilometraza(kilometraza);
+				if(author != null){
+					ebook.setAuthor(author);
 				}
 				
-				if(proizvodjacID != null){
-					automobil.setProizvodjac(proizvodjacDAO.findById(proizvodjacID));
+				if(filename != null){
+					ebook.setFilename(filename);
+				}
+			
+				
+				if(year != null){
+					ebook.setYear(year);
 				}
 				
-				if(modelID != null){
-					automobil.setModel(modelDAO.findById(modelID));
+				if(mimeSelect != null){
+
+					ebook.setMime(mimeSelect);
 				}
 				
-				if(opisVOzila != null){
-					automobil.setOpisVOzila(opisVOzila);
+				if(langSelect != null){
+					ebook.setLanguage(languageDao.findById(langSelect));
 				}
 				
-				if(oprema != null){
-					automobil.setOprema(oprema);
+				if(categorySelect != null){
+					ebook.setCategory(categoryDao.findById(categorySelect));
 				}
 				
-				if(menjac != null){
-					automobil.setMenjac(menjac);
-				}
-				
-				if(snaga != null){
-					automobil.setSnaga(snaga);
-				}
-				
-				if(kubikaza != null){
-					automobil.setKubikaza(kubikaza);
-				}
-				
-				if(kontakt != null){
-					automobil.setKontakt(kontakt);
-				}
-				
-				if(mesto != null){
-					automobil.setMesto(mesto);
-				}
-				
-				if(gorivo != null){
-					automobil.setGorivo(gorivo);
-				}
-				automobilDAO.merge(automobil);
+				ebookDao.merge(ebook);
 			
 			}
-			getServletContext().getRequestDispatcher("/PrepareCreateControllAutomobil").forward(request, response);
+			getServletContext().getRequestDispatcher("/ReadControllerEbooks").forward(request, response);
 			
 		}catch (ServletException e){
 			log.error(e);
@@ -159,7 +124,7 @@ public class UpdateControllerAutomobili extends HttpServlet {
 		}catch (IOException e) {
 			log.error(e);
 			throw e;
-		} */
+		} 
 	}
 	
 	

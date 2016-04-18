@@ -38,7 +38,7 @@
          
           
         <!-- meni kada korisnik nije ulogovan -->
-	         <c:if test="${sessionScope.administrator == null && sessionScope.moderator== null}">	
+	         <c:if test="${sessionScope.administrator == null && sessionScope.subscriber== null}">	
 								<!-- 	<td><a class="dugme" href="./ReadControllerEbooks">Ebooks</a></td>
 									<td><a class="dugme" href="./PrepareReadControllerProizvodjac">Category</a></td>
 									 -->
@@ -101,7 +101,7 @@
 			
 			
 			<!-- Meni kada je korisnik ulogovan kao MODERATOR -->
-			<c:if test="${sessionScope.moderator==true}">
+			<c:if test="${sessionScope.subscriber==true}">
 							<div id="navbar" class="navbar-collapse collapse">
 											          <ul class="nav navbar-nav">
 											            <li ><a href="./index.jsp">Home</a></li>
@@ -143,11 +143,11 @@
 	            <c:if test="${sessionScope.admin!=null}">
 					    <p id="printName"> ${sessionScope.adminName}</p>        	
 				</c:if>
-				<c:if test="${sessionScope.administrator == null && sessionScope.moderator == null }"> 
+				<c:if test="${sessionScope.administrator == null && sessionScope.subscriber == null }"> 
 						<a class="dugme" href="./login.jsp">Sign in</a>
 				
 				</c:if>
-				<c:if test="${sessionScope.administrator==true || sessionScope.moderator==true}">
+				<c:if test="${sessionScope.administrator==true || sessionScope.subscriber ==true}">
 				           			<td> <a class="dugme" href="./LogoutController">Log out</a> </td>
 				</c:if>	
 					
@@ -189,6 +189,7 @@
 
 			    
 			
+					
 										
 				<table >
 					
@@ -210,9 +211,10 @@
 					        
 					      </div>	
 					</tr>
+					
 				
 					<c:forEach items = "${ebooks}" var = "ebook">
-						<tr>
+					<tr>
 							 <div class="row">
          								<div id="rowBook" class="col-md-2">${ebook.title}</div>
 										<div id="rowBook" class="col-md-2">${ebook.author}</div>
@@ -227,26 +229,23 @@
   												</div>
 										</c:if>								
        						 </div>
-						</tr>
+					</tr>
+					</c:forEach>
+					
 						
-						</c:forEach>
-						
-						
-	            <c:if test="${sessionScope.admin == null}">
-						<c:forEach var="item" items="${ ebooks }">
+	         		<c:if test="${sessionScope.administrator == null && sessionScope.subscriber== null}">	
+					<c:forEach var="item" items="${ ebooks }">
 							  <div class="col-md-4">
 							    <div class="thumbnail">
-<!-- 							      <img src="http://res-5.cloudinary.com/cloudinary/image/upload/c_limit,h_540,w_770/eu84dbcuxv7uubiy9q70g.png" alt="...">
- -->							      <div data-toggle="collapse" data-target="#demo${item.id } class="caption">
+ 							      <div data-toggle="collapse" data-target="#demo${item.id } class="caption">
 							        		<h3>${item.title }</h3>
 							          			
   
-							      		</div>
+							      	</div>
 									
 									<button class="btn btn-default" data-toggle="collapse" data-target="#demo${item.id }">More details</button>
-
-<!-- 							        <p><a href="#" class="btn btn-primary" role="button">See more</a> 
- -->							        <a href="#" class="btn btn-default" role="button">Download</a></p>
+									
+							    	<a href="#" class="btn btn-default" role="button">Download</a></p>
 							        <!-- DODATI DA SAMO SUBSCRIBER TE VRSTE MOZE DA DOWNLOADUJE -->
 							      <div id="demo${item.id }" class="collapse">
 												<p class="info">Author: ${item.author }</p>
@@ -256,8 +255,9 @@
 									</div>
 							    </div>
 							  </div>
-				        </c:forEach>				
-				</c:if>			
+				      </c:forEach>
+				      </c:if>				
+						
 				</table>	
 				
 											
@@ -299,18 +299,17 @@
 								    				<input type="number"   name= "year" class="form-control"  required>
 							  					</div>
 							  					
-							  					<div class="input-group" id="tipDiv">			                	
+							  					<div class="input-group" id="4">			                	
 												 	<p>Mime Type:</p>  	 
 												<select  size="1" style="height:35px;width:100%;" name="mimeSelect" >
 														<option value="pdf">PDF</option>
-														<option value="pdf">PPT</option>
-														<option value="pdf">ODP</option>
+												
 														
 													
 												</select>						
 												</div>
 							  					
-							  					<div class="input-group" id="tipDiv">			                	
+							  					<div class="input-group" id="l">			                	
 												 	<p>Language:</p>  	 
 												<select  size="1" style="height:35px;width:100%;" name="langSelect" >
 													<c:forEach items="${languages}" var="lang">
@@ -319,7 +318,7 @@
 												</select>						
 												</div>
 												
-							  					<div class="input-group" id="tipDiv">			                	
+							  					<div class="input-group" id=",">			                	
 												 	<p>Category:</p>  	 
 												<select  size="1" style="height:35px;width:100%;" name="categorySelect" >
 													<c:forEach items="${category}" var="cat">
@@ -388,10 +387,9 @@
 												
 												
 									<div class="modal-footer">
-									<button type="button" class="dugme" data-dismiss="modal" style="width:90px; margin-right:10px;">Cancel</button>
-									<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button>
-										     
-										      </div>
+										<button type="button" class="dugme" data-dismiss="modal" style="width:90px; margin-right:10px;">Cancel</button>
+										<button class="dugme" id="submit" type="submit" class="btn-success" style="width:90px; float:right;">Submit</button> 
+									</div>
 
 					                </c:if>
 						</form>
