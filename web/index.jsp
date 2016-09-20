@@ -219,7 +219,7 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 											              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
 											              <ul class="dropdown-menu">
 											                <li><a href="./PrepareUpdateKorisnikLozinka">Change Password</a></li>
-											                <li><a href="./PrepareUpdateUser">Change data</a></li>
+											                <li><a href="./PrepareUpdateUser">Update profile</a></li>
 											                <li role="separator" class="divider"></li>
 											                <li class="dropdown-header"></li>
 											                <li><a href="./PrepareCreateControllerKorisnik">See all users</a></li>
@@ -254,7 +254,7 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 											              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
 											              <ul class="dropdown-menu">
 											                <li><a href="./PrepareUpdateKorisnikLozinka">Change Password</a></li>
-											                <li><a href="./PrepareUpdateUser">Change data</a></li>
+											                <li><a href="./PrepareUpdateUser">Update profile</a></li>
 											                
 											              </ul>
 											            </li>

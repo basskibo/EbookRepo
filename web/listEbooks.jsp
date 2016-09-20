@@ -197,16 +197,18 @@
 					<tr>	
 					
 						  <div class="row">
+						  	<c:if test="${sessionScope.admin == null}">
+						  		<div id="rowTitle" 	class="col-md-2">Number</div>
+						  	</c:if>
 					        <div id="rowTitle"  class="col-md-2">Title</div>
 					        <div id="rowTitle"  class="col-md-2">Author</div>
 					        <div id="rowTitle"  class="col-md-2">Publication year</div>
 					        <div id="rowTitle"  class="col-md-2">Language</div>
 					    	<div id="rowTitle"  class="col-md-2">Category</div>
 					    	<c:if test="${sessionScope.admin!=null}">
-  												<div id="rowTitle" class="col-md-2">
-  														Change
-
-  												</div>
+  								<div id="rowTitle" class="col-md-2">
+  									Change
+  								</div>
 							</c:if>		
 					        
 					      </div>	
@@ -216,6 +218,13 @@
 					<c:forEach items = "${ebooks}" var = "ebook">
 					<tr>
 							 <div class="row">
+							   			<c:if test="${sessionScope.admin ==null}">
+							 
+								 			<c:set var="i" value="${i+1}"/>
+											<div id="rowBook" class="col-md-2">
+												<c:out value="${i}"/>.
+											</div>
+										</c:if>
          								<div id="rowBook" class="col-md-2">${ebook.title}</div>
 										<div id="rowBook" class="col-md-2">${ebook.author}</div>
 										<div id="rowBook" class="col-md-2">${ebook.year}</div>
@@ -232,14 +241,15 @@
 					</tr>
 					</c:forEach>
 					
-						
+					<br/>
+					<br/>	
 	         		<c:if test="${sessionScope.administrator == null && sessionScope.subscriber== null}">	
 					<c:forEach var="item" items="${ ebooks }">
 							  <div class="col-md-4">
 							    <div class="thumbnail">
  							      <div data-toggle="collapse" data-target="#demo${item.id } class="caption">
-							        		<h3>${item.title }</h3>
-							          			
+							        		<h2>${item.title }</h2>
+							          		<h4>${ item.year }</h4>
   
 							      	</div>
 									
