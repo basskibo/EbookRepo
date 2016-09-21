@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    %>
    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 
@@ -216,13 +216,13 @@
 										</div>
 										<div id="rowBook" class="col-md-3">${cat.name}</div>
 										
-  										<c:if test="${sessionScope.admin!=null}">
+  										<c:if test="${sessionScope.administrator != null}">
   												<div id="rowBook" class="col-md-2">
   													<a class="btnAR"  href="./PrepareUpdateCategory?category_id=${cat.categoryID }">Edit</a>
    													<a class="btnAR" href="./DeleteControllerCategory?category_id=${cat.categoryID }">Remove</a>
  												</div>
 										</c:if>	
-					        <c:if test="${sessionScope.admin ==null}">
+					        <c:if test="${sessionScope.administrator == null}">
 										<div id="rowBook" class="col-md-2">
 											<a class="btnAR" name="categorySelect" href="./FindCategoryBooks?category_id=${cat.categoryID }">See all</a>
 										</div>
@@ -238,7 +238,7 @@
 				</table>
 				
 				
-			<c:if test="${sessionScope.admin==null}">
+			<c:if test="${sessionScope.administrator == null}">
 				<h2>Currently available categories</h2>
 				<c:forEach items = "${category}" var = "cat">
 					
@@ -257,7 +257,7 @@
 				</c:forEach>
 			</c:if>
 			
-			<c:if test="${sessionScope.administrator==true}">	
+			<c:if test="${sessionScope.administrator == true}">	
 			
 				<!-- Trigger the modal with a button -->
 				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#newCategory">Create new Category</button>
@@ -310,7 +310,7 @@
 			    <div class="modal-dialog modal-sm">
 			      <div class="modal-content">
 			        <div class="modal-header">
-			          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+			          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">ï¿½</span></button>
 			          <h4 class="modal-title" id="myModalLabel">Confirm</h4>
 			        </div>
 			        <div class="modal-body">

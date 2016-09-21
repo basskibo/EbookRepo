@@ -197,7 +197,7 @@
 					<tr>	
 					
 						  <div class="row">
-						  	<c:if test="${sessionScope.admin == null}">
+						  	<c:if test="${sessionScope.admin == null && sessionScope.subscriber == null}">
 						  		<div id="rowTitle" 	class="col-md-2">Number</div>
 						  	</c:if>
 					        <div id="rowTitle"  class="col-md-2">Title</div>
@@ -205,10 +205,15 @@
 					        <div id="rowTitle"  class="col-md-2">Publication year</div>
 					        <div id="rowTitle"  class="col-md-2">Language</div>
 					    	<div id="rowTitle"  class="col-md-2">Category</div>
-					    	<c:if test="${sessionScope.admin!=null}">
+					    	<c:if test="${sessionScope.administrator != null}">
   								<div id="rowTitle" class="col-md-2">
   									Change
   								</div>
+							</c:if>
+							<c:if test="${sessionScope.subscriber != null }">
+								<div id="rowTitle" class="col-md-2">
+									Download
+								</div>
 							</c:if>		
 					        
 					      </div>	
@@ -218,7 +223,7 @@
 					<c:forEach items = "${ebooks}" var = "ebook">
 					<tr>
 							 <div class="row">
-							   			<c:if test="${sessionScope.admin ==null}">
+							   			<c:if test="${sessionScope.administrator == null && sessionScope.subscriber == null }">
 							 
 								 			<c:set var="i" value="${i+1}"/>
 											<div id="rowBook" class="col-md-2">
@@ -230,12 +235,29 @@
 										<div id="rowBook" class="col-md-2">${ebook.year}</div>
 										<div id="rowBook" class="col-md-2">${ebook.language.name}</div>
 										<div id="rowBook" class="col-md-2">${ebook.category.name}</div>
-  										<c:if test="${sessionScope.admin!=null}">
+  										<c:if test="${sessionScope.administrator != null}">
   												<div id="rowBook" class="col-md-2">
   													<a class="btnAR" href="./PrepareUpdateEbook?ebook_id=${ebook.id }">Edit</a>
   													<a class="btnAR" href="./DeleteControllerEbook?ebook_id=${ebook.id }">Delete</a>
-  													
   												</div>
+										</c:if>
+
+										<c:if test="${sessionScope.subscriber != null }">
+											<c:if test="${sessionScope.category == ebook.category.categoryID }">
+												<div id="rowBook" class="col-md-2">
+												<a class="btnAr" href="#">Download</a>
+											</div>
+											</c:if>
+											<c:if test="${sessionScope.category != ebook.category.categoryID && sessionScope.allCategory == null }">
+												<div id="rowBook" class="col-md-2">
+												<a class="btnArs" href="#">Subscribe</a>
+											</div>
+											</c:if>
+											<c:if test="${sessionScope.allCategory != null }">
+												<div id="rowBook" class="col-md-2">
+													<a class="btnAr" href="#">Download</a>
+												</div>
+											</c:if>
 										</c:if>								
        						 </div>
 					</tr>
@@ -284,11 +306,15 @@
       </div>
       <div class="modal-body">
 			<c:if test="${sessionScope.admin!=null}">
-				<h2>Add new book</h2>				
+				<h2 class="text-center">Add new book</h2>				
 	    		<form action="./CreateControllerEbook" method="post" accept-charset="ISO-8859-1" >
 <!-- 	    									onsubmit="return checkForm(this);"
  -->					        		<c:if test="${sessionScope.admin !=null}">
-					        		
+					        						<div class="input-group">
+														<span  class="input-group-addon">Upload File</span>											
+													  	<input type="file" name="filename" accept=".pdf" class="form-control" >
+												
+													</div>
 								                	<div class="input-group">
 									    				<span class="input-group-addon">Title</span>
 									    				<input type="text" class="form-control"  name="title" required>
@@ -298,44 +324,39 @@
 									    				<span  class="input-group-addon">Author</span>
 									    				<input type="text"   name= "author"  class="form-control" required>
 								    				</div>
-								    				 <div class="input-group">
 								    				
-									    				<span class="input-group-addon">Filename</span>
-									    				<input type="file" class="form-control"  name="filename">
-									    			</div>
 									               						    												                
 								    			<div class="input-group">
 								    				<span  class="input-group-addon">Year</span>
 								    				<input type="number"   name= "year" class="form-control"  required>
 							  					</div>
-							  					
-							  					<div class="input-group" id="4">			                	
-												 	<p>Mime Type:</p>  	 
-												<select  size="1" style="height:35px;width:100%;" name="mimeSelect" >
-														<option value="pdf">PDF</option>
-												
-														
-													
+							  					<div class="input-group" id=",">			                	
+									    				<span  class="input-group-addon">Category</span>
+												<select  size="1" style="height:35px;" class="form-control"  name="categorySelect" >
+													<c:forEach items="${category}" var="cat">
+														<option value="${cat.categoryID}">${cat.name}</option>
+													</c:forEach>
 												</select>						
 												</div>
+							  					<div class="input-group" id="4">			                	
+									    				<span  class="input-group-addon">Mime-Type</span>
+												<select  size="1" class="form-control" style="height:35px;" name="mimeSelect" >
+														<option value="pdf">PDF</option>
+																																				
+												</select>						
+												</div>
+												
 							  					
 							  					<div class="input-group" id="l">			                	
-												 	<p>Language:</p>  	 
-												<select  size="1" style="height:35px;width:100%;" name="langSelect" >
+									    				<span  class="input-group-addon">Language</span>
+												<select  size="1" style="height:35px;" class="form-control" name="langSelect" >
 													<c:forEach items="${languages}" var="lang">
 														<option value="${lang.languageID}">${lang.name}</option>
 													</c:forEach>
 												</select>						
 												</div>
 												
-							  					<div class="input-group" id=",">			                	
-												 	<p>Category:</p>  	 
-												<select  size="1" style="height:35px;width:100%;" name="categorySelect" >
-													<c:forEach items="${category}" var="cat">
-														<option value="${cat.categoryID}">${cat.name}</option>
-													</c:forEach>
-												</select>						
-												</div>
+							  					
 		
 										 <script type="text/javascript">
 										

@@ -237,17 +237,14 @@
 									 --%>
 									 
 									 
-									 
-									 
-									 
-									 
-									 
-									 
-									   <div class="jumbotron">
+		<div class="jumbotron">
 	      <div class="container">
 	       <!--  <h1>List of ebooks</h1>
 	        	<p >Find what you like or choose category you like</p>
 	        	<div id="filtriranje"> -->
+	        	<div class="row">
+	        		<a  href="./ReadControllerEbooks"><span class="glyphicon glyphicon-chevron-left"></span> Go Back </a>
+	        	</div>
 	        	<div class="page-header">
 			        <h1>List of all  ${category.name } books</h1>
 			      

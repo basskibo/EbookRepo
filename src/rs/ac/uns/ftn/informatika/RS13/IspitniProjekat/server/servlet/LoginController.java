@@ -1,6 +1,8 @@
 package rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet;
 
-import java.io.IOException;
+import org.apache.log4j.Logger;
+import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.User;
+import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.UserDaoLocal;
 
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
@@ -10,11 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.log4j.Logger;
-
-import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.User;
-import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.UserDaoLocal;
+import java.io.IOException;
 
 public class LoginController extends HttpServlet {
 
@@ -43,9 +41,16 @@ public class LoginController extends HttpServlet {
 			if (korisnik != null) {	
 				HttpSession session = request.getSession(true);
 				session.setAttribute("admin", korisnik);
+				System.out.println("korisnik je: " + korisnik);
 				session.setAttribute("adminName", korisnik.getFirstName());
 				if(korisnik.getType().equalsIgnoreCase("subscriber")){
 					session.setAttribute("subscriber", true);
+					if (korisnik.getCategory() != null) {
+						session.setAttribute("category", korisnik.getCategory().getCategoryID());
+					} else {
+						session.setAttribute("allCategory", korisnik);
+					}
+
 				}
 				if(korisnik.getType().equalsIgnoreCase("administrator")){
 					session.setAttribute("administrator", true);

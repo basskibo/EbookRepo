@@ -182,6 +182,16 @@ hr {
     border-radius: 5px;
 }
 
+.btnARs{
+	background: #800000;
+	color: #888999;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-radius: 5px;
+}
+
 .btnAR a: hover{
 	text-decoration: none;
 	color:#fed142;

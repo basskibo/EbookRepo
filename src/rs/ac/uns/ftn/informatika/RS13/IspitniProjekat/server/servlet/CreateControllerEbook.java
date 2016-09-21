@@ -1,21 +1,19 @@
 package rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet;
 
-import java.io.IOException;
-
-import javax.ejb.EJB;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.log4j.Logger;
-
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.Category;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.Ebook;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.Language;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.CategoryDaoLocal;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.EbookDaoLocal;
 import rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.session.LanguageDaoLocal;
+
+import javax.ejb.EJB;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 
 public class CreateControllerEbook extends HttpServlet {
@@ -79,10 +77,9 @@ public class CreateControllerEbook extends HttpServlet {
 			cata = request.getParameter("categorySelect");
 			lang = request.getParameter("langSelect");
 
-			System.out.println("cata:" +cata);
-			System.out.println("lang:" +catID);
-			System.out.println(year);
-			Ebook ebook = new Ebook();
+            System.out.println("category of new book:" + cata);
+            System.out.println("filename of new book:" + filename);
+            Ebook ebook = new Ebook();
 			Category cat = new Category();
 			Language l = new Language();
 		
