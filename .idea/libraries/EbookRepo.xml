@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="EbookRepo">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lucene-core-4.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lucene-highlighter-4.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/poi-3.7-20101029.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lucene-analyzers-common-4.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/pdfbox-1.7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lucene-queryparser-4.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/poi-scratchpad-3.7-20101029.jar!/" />
+      <root url="jar://$PROJECT_DIR$/poi-ooxml-3.7-20101029.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
