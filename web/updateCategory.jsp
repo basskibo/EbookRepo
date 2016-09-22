@@ -2,13 +2,9 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
-
-
 <jsp:useBean id="category"
 	type="rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.entity.Category"
 	scope="request" />
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,10 +33,7 @@
 			<a class="navbar-brand" href="./index.jsp">E-Book shop</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
-
 			<form class="navbar-form navbar-left">
-
-
 				<!-- meni kada korisnik nije ulogovan -->
 				<c:if
 					test="${sessionScope.administrator == null && sessionScope.subscriber== null}">
@@ -67,8 +60,6 @@
 						</ul>
 					</div>
 					<!--/.nav-collapse -->
-
-
 				</c:if>
 
 				<!-- Meni kada je korisnik ulogovan kao ADMIN -->
@@ -104,9 +95,6 @@
 						</ul>
 					</div>
 					<!--/.nav-collapse -->
-
-
-
 				</c:if>
 
 				<!-- Meni kada je korisnik ulogovan kao MODERATOR -->
@@ -134,19 +122,12 @@
 									<li><a href="./PrepareUpdateKorisnikLozinka">Change
 											Password</a></li>
 									<li><a href="./PrepareUpdateUser">Change data</a></li>
-
 								</ul></li>
 						</ul>
 					</div>
 					<!--/.nav-collapse -->
 				</c:if>
-
-
-
-
-
 			</form>
-
 
 			<form class="navbar-form navbar-right">
 				<c:if test="${sessionScope.admin!=null}">
@@ -161,8 +142,8 @@
 					test="${sessionScope.administrator==true || sessionScope.subscriber==true}">
 					<td><a class="dugme" href="./LogoutController">Log out</a></td>
 				</c:if>
-
 			</form>
+			
 		</div>
 		<!--/.navbar-collapse -->
 	</div>
@@ -178,7 +159,6 @@
 	<!-- Modal -->
 	<div id="editCategory" class="modal fade" role="dialog">
 		<div class="modal-dialog">
-
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
@@ -189,7 +169,6 @@
 					<c:if test="${sessionScope.admin!=null}">
 						<form action="./UpdateControllerCategory" method="post"
 							accept-charset="ISO-8859-1">
-
 							<div class="input-group">
 								<span class="input-group-addon">Category Name</span> <input
 									type="text" class="form-control" name="catName"
@@ -200,18 +179,11 @@
 							<div class="modal-footer">
 								<button class="dugme" id="submit" type="submit"
 									class="btn-success" style="width: 90px; float: right;">Submit</button>
-
 							</div>
-
 						</form>
-
 					</c:if>
-
-
 				</div>
-
 			</div>
-
 		</div>
 	</div>
 
