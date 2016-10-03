@@ -101,8 +101,8 @@ public class CreateControllerKorisnik extends HttpServlet {
 							System.out.println("******************Kategorija korisnika je "+ category.getName());	
 							korisnik.setType("subscriber");	
 					}
-						else if(cat.equalsIgnoreCase("Fantasy")){
-							cat = "1";
+						else if(cat.equalsIgnoreCase("Comic")){
+							cat = "2";
 							category.setCategoryID(Integer.parseInt(cat));
 							System.out.println("******************Kategorija je "+ cat);	
 							korisnik.setCategory(category);
@@ -111,7 +111,31 @@ public class CreateControllerKorisnik extends HttpServlet {
 
 							
 						}else if(cat.equalsIgnoreCase("Sci-fi")){
-							cat="2";
+							cat="3";
+							category.setCategoryID(Integer.parseInt(cat));
+							System.out.println("******************Kategorija je "+ cat);	
+							korisnik.setCategory(category);
+							System.out.println("******************Kategorija korisnika je "+ category.getName());	
+							korisnik.setType("subscriber");
+
+						}else if(cat.equalsIgnoreCase("Fantasy")){
+							cat = "4";
+							category.setCategoryID(Integer.parseInt(cat));
+							System.out.println("******************Kategorija je "+ cat);	
+							korisnik.setCategory(category);
+							System.out.println("******************Kategorija korisnika je "+ category.getName());	
+							korisnik.setType("subscriber");
+
+						}else if(cat.equalsIgnoreCase("Education")){
+							cat="5";
+							category.setCategoryID(Integer.parseInt(cat));
+							System.out.println("******************Kategorija je "+ cat);	
+							korisnik.setCategory(category);
+							System.out.println("******************Kategorija korisnika je "+ category.getName());	
+							korisnik.setType("subscriber");
+
+						}else if(cat.equalsIgnoreCase("Mystery")){
+							cat="6";
 							category.setCategoryID(Integer.parseInt(cat));
 							System.out.println("******************Kategorija je "+ cat);	
 							korisnik.setCategory(category);
@@ -119,15 +143,15 @@ public class CreateControllerKorisnik extends HttpServlet {
 							korisnik.setType("subscriber");
 
 						}else if(cat.equalsIgnoreCase("Romantic")){
-							cat = "3";
+							cat="1";
 							category.setCategoryID(Integer.parseInt(cat));
 							System.out.println("******************Kategorija je "+ cat);	
 							korisnik.setCategory(category);
-							System.out.println("******************Kategorija korisnika je "+ category.getName());	
+							System.out.println("******************Kategorija korisnika je "+ korisnik.getCategory());	
 							korisnik.setType("subscriber");
 
-						}else if(cat.equalsIgnoreCase("Comic")){
-							cat="4";
+						}else if(cat.equalsIgnoreCase("Epic")){
+							cat="7";
 							category.setCategoryID(Integer.parseInt(cat));
 							System.out.println("******************Kategorija je "+ cat);	
 							korisnik.setCategory(category);
@@ -137,18 +161,9 @@ public class CreateControllerKorisnik extends HttpServlet {
 						}
 						
 					
-					
-					
+									
 				}
 				
-					
-					
-				
-				
-				
-				
-			
-			
 			korisnikDao.persist(korisnik);
 			getServletContext().getRequestDispatcher("/PrepareCreateControllerKorisnik").forward(request, response);
 			return;
