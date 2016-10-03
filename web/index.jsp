@@ -177,9 +177,6 @@ input#img-1:checked ~ .nav-dots label#img-dot-1, input#img-2:checked ~
 					<!-- meni kada korisnik nije ulogovan -->
 					<c:if
 						test="${sessionScope.administrator == null && sessionScope.subscriber== null}">
-						<!-- 	<td><a class="dugme" href="./ReadControllerEbooks">Ebooks</a></td>
-									<td><a class="dugme" href="./PrepareReadControllerProizvodjac">Category</a></td>
-									 -->
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
 								<li class="active"><a href="./index.jsp">Home</a></li>
@@ -189,21 +186,17 @@ input#img-1:checked ~ .nav-dots label#img-dot-1, input#img-2:checked ~
 									aria-expanded="false">Category <span class="caret"></span></a>
 									<ul class="dropdown-menu">
 										<li><a href="./PrepareReadControllerCategory">See all</a></li>
-
 										<li role="separator" class="divider"></li>
 										<li class="dropdown-header">See more</li>
-										<li><a href="#">Sci-fi</a></li>
-										<li><a href="#">Drama</a></li>
-										<li><a href="#">Epska poezija</a></li>
-										<li><a href="#">Fantazija</a></li>
+										<li><a href="./FindCategory?categorySelect=Sci-fi">Sci-fi</a></li>
+										<li><a href="./FindCategory?categorySelect=Comic">Comic</a></li>
+										<li><a href="./FindCategory?categorySelect=Mystery">Mystery</a></li>
 									</ul></li>
 							</ul>
 						</div>
 						<!--/.nav-collapse -->
 
-
 					</c:if>
-
 					<!-- Meni kada je korisnik ulogovan kao ADMIN -->
 					<c:if test="${sessionScope.administrator==true}">
 						<div id="navbar" class="navbar-collapse collapse">
@@ -215,12 +208,11 @@ input#img-1:checked ~ .nav-dots label#img-dot-1, input#img-2:checked ~
 									aria-expanded="false">Category <span class="caret"></span></a>
 									<ul class="dropdown-menu">
 										<li><a href="./PrepareReadControllerCategory">See all</a></li>
-										<li><a href="#">Sci-fi</a></li>
-										<li><a href="#">Drama</a></li>
 										<li role="separator" class="divider"></li>
 										<li class="dropdown-header">See more</li>
-										<li><a href="#">Epska poezija</a></li>
-										<li><a href="#">Fantazija</a></li>
+										<li><a href="./FindCategory?categorySelect=Sci-fi">Sci-fi</a></li>
+										<li><a href="./FindCategory?categorySelect=Comic">Comic</a></li>
+										<li><a href="./FindCategory?categorySelect=Mystery">Mystery</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -237,9 +229,6 @@ input#img-1:checked ~ .nav-dots label#img-dot-1, input#img-2:checked ~
 							</ul>
 						</div>
 						<!--/.nav-collapse -->
-
-
-
 					</c:if>
 
 					<!-- Meni kada je korisnik ulogovan kao MODERATOR -->
@@ -253,12 +242,11 @@ input#img-1:checked ~ .nav-dots label#img-dot-1, input#img-2:checked ~
 									aria-expanded="false">Category <span class="caret"></span></a>
 									<ul class="dropdown-menu">
 										<li><a href="./PrepareReadControllerCategory">See all</a></li>
-										<li><a href="#">Sci-fi</a></li>
-										<li><a href="#">Drama</a></li>
 										<li role="separator" class="divider"></li>
 										<li class="dropdown-header">See more</li>
-										<li><a href="#">Epska poezija</a></li>
-										<li><a href="#">Fantazija</a></li>
+										<li><a href="./FindCategory?categorySelect=Sci-fi">Sci-fi</a></li>
+										<li><a href="./FindCategory?categorySelect=Comic">Comic</a></li>
+										<li><a href="./FindCategory?categorySelect=Mystery">Mystery</a></li>
 									</ul></li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -267,15 +255,11 @@ input#img-1:checked ~ .nav-dots label#img-dot-1, input#img-2:checked ~
 										<li><a href="./PrepareUpdateKorisnikLozinka">Change
 												Password</a></li>
 										<li><a href="./PrepareUpdateUser">Update profile</a></li>
-
 									</ul></li>
 							</ul>
 						</div>
 						<!--/.nav-collapse -->
 					</c:if>
-
-
-
 
 
 				</form>

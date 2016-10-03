@@ -6,11 +6,9 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href="./izmenaLicnihPodataka.css" rel="stylesheet" type="text/css" />
 	<link href="./listEbooks.css" rel="stylesheet" type="text/css" />
 	<link href="./listCategory.css" rel="stylesheet" type="text/css" />
-	<link href="./bootstrap.css" rel="stylesheet" type="text/css" /><title>All categories</title>
-	
+	<link href="./bootstrap.css" rel="stylesheet" type="text/css" />
 	<title>Change password</title>
 	
 </head>
@@ -18,149 +16,132 @@
 
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="./index.jsp">E-Book shop</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-       
-         <form class="navbar-form navbar-left">
-         
-          
-          	 <!-- meni kada korisnik nije ulogovan -->
-	         <c:if test="${sessionScope.administrator == null && sessionScope.subscriber== null}">	
-								<!-- 	<td><a class="dugme" href="./ReadControllerEbooks">Ebooks</a></td>
-									<td><a class="dugme" href="./PrepareReadControllerProizvodjac">Category</a></td>
-									 -->
-									    <div id="navbar" class="navbar-collapse collapse">
-								          <ul class="nav navbar-nav">
-								            <li class="active"><a href="./index.jsp">Home</a></li>
-								            <li><a  href="./ReadControllerEbooks">E-books</a></li>
-								            <li class="dropdown">
-								              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
-								              <ul class="dropdown-menu">
-								                <li><a href="./PrepareReadControllerCategory">See all</a></li>
-								                <li><a href="#">Sci-fi</a></li>
-								                <li><a href="#">Drama</a></li>
-								                <li role="separator" class="divider"></li>
-								                <li class="dropdown-header">See more</li>
-								                <li><a href="#">Epska poezija</a></li>
-								                <li><a href="#">Fantazija</a></li>
-								              </ul>
-								            </li>
-								          </ul>
-								        </div><!--/.nav-collapse -->
-									
-								
-			</c:if>
-			
-				<!-- Meni kada je korisnik ulogovan kao ADMIN -->
-			<c:if test="${sessionScope.administrator==true}">	
-						 <div id="navbar" class="navbar-collapse collapse">
-											          <ul class="nav navbar-nav">
-											            <li class="active"><a href="./index.jsp">Home</a></li>
-											            <li><a  href="./ReadControllerEbooks">E-books</a></li>
-											            <li class="dropdown">
-											              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
-											              <ul class="dropdown-menu">
-											                <li><a href="./PrepareReadControllerCategory">See all</a></li>
-											                <li><a href="#">Sci-fi</a></li>
-											                <li><a href="#">Drama</a></li>
-											                <li role="separator" class="divider"></li>
-											                <li class="dropdown-header">See more</li>
-											                <li><a href="#">Epska poezija</a></li>
-											                <li><a href="#">Fantazija</a></li>
-											              </ul>
-											            </li>
-											             <li class="dropdown">
-											              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
-											              <ul class="dropdown-menu">
-											                <li><a href="./PrepareReadControllerCategory">Change Password</a></li>
-											                <li><a href="#">Change data</a></li>
-											                <li role="separator" class="divider"></li>
-											                <li class="dropdown-header"></li>
-											                <li><a href="#">See all users</a></li>
-											              </ul>
-											            </li>
-											          </ul>
-						</div><!--/.nav-collapse -->
-												
-							<!-- 	<a class="dugme" href="./PrepareCreateControllAutomobil" class="tdli" >Ebooks</a>
-								<a class="dugme" href="./PrepareCreateControllerProizvodjac"  class="tdli">Category</a>
-								<a class="dugme" href="./PrepareCreateControllerKorisnik" class="tdli">Users</a>
-								<a class="dugme" href="./PrepereUpdateControllerKorisnik" class="tdli">Change data</a>
-								<a class="dugme" href="./PrepareUpdateKorisnikLozinka" class="tdli">Change Password</a>
-									 -->
-			</c:if>
-			
-			<!-- Meni kada je korisnik ulogovan kao MODERATOR -->
-			<c:if test="${sessionScope.subscriber==true}">
-					<div id="navbar" class="navbar-collapse collapse">
-													          <ul class="nav navbar-nav">
-													            <li class="active"><a href="./index.jsp">Home</a></li>
-													            <li><a  href="./ReadControllerEbooks">E-books</a></li>
-													            <li class="dropdown">
-													              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
-													              <ul class="dropdown-menu">
-													                <li><a href="./PrepareReadControllerCategory">See all</a></li>
-													                <li><a href="#">Sci-fi</a></li>
-													                <li><a href="#">Drama</a></li>
-													                <li role="separator" class="divider"></li>
-													                <li class="dropdown-header">See more</li>
-													                <li><a href="#">Epska poezija</a></li>
-													                <li><a href="#">Fantazija</a></li>
-													              </ul>
-													            </li>
-													             <li class="dropdown">
-													              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
-													              <ul class="dropdown-menu">
-													                <li><a href="./PrepareReadControllerCategory">Change Password</a></li>
-													                <li><a href="#">Change data</a></li>
-													                <li role="separator" class="divider"></li>
-													                <li class="dropdown-header"></li>
-													                <li><a href="#">See all users</a></li>
-													              </ul>
-													            </li>
-													          </ul>
-						</div><!--/.nav-collapse -->
-			
-			
-			
-			<!-- 			 	<a href="./ReadControllerEbooks" class="dugme" >Ebooks</a> 
-								<a href="./ReadControllerModeli" class="dugme" >Category</a>		
-								<a href="./PrepereUpdateControllerKorisnik" class="dugme">Change data</a>
-								<a href="./PrepareUpdateKorisnikLozinka" class="dugme">Change Password</a> -->
-			</c:if>
-			
-			
-			
-			
-         
-         </form>
-        
-        
-          <form class="navbar-form navbar-right">
-	            <c:if test="${sessionScope.admin!=null}">
-					    <p id="printName"> ${sessionScope.adminName} </p>        	
-				</c:if>
-				<c:if test="${sessionScope.administrator == null && sessionScope.subscriber == null }"> 
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="./index.jsp">E-Book shop</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+
+				<form class="navbar-form navbar-left">
+
+
+					<!-- meni kada korisnik nije ulogovan -->
+					<c:if
+						test="${sessionScope.administrator == null && sessionScope.subscriber== null}">
+						<div id="navbar" class="navbar-collapse collapse">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="./index.jsp">Home</a></li>
+								<li><a href="./ReadControllerEbooks">E-books</a></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Category <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="./PrepareReadControllerCategory">See all</a></li>
+										<li role="separator" class="divider"></li>
+										<li class="dropdown-header">See more</li>
+										<li><a href="./FindCategory?categorySelect=Sci-fi">Sci-fi</a></li>
+										<li><a href="./FindCategory?categorySelect=Comic">Comic</a></li>
+										<li><a href="./FindCategory?categorySelect=Mystery">Mystery</a></li>
+									</ul></li>
+							</ul>
+						</div>
+						<!--/.nav-collapse -->
+
+					</c:if>
+					<!-- Meni kada je korisnik ulogovan kao ADMIN -->
+					<c:if test="${sessionScope.administrator==true}">
+						<div id="navbar" class="navbar-collapse collapse">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="./index.jsp">Home</a></li>
+								<li><a href="./ReadControllerEbooks">E-books</a></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Category <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="./PrepareReadControllerCategory">See all</a></li>
+										<li role="separator" class="divider"></li>
+										<li class="dropdown-header">See more</li>
+										<li><a href="./FindCategory?categorySelect=Sci-fi">Sci-fi</a></li>
+										<li><a href="./FindCategory?categorySelect=Comic">Comic</a></li>
+										<li><a href="./FindCategory?categorySelect=Mystery">Mystery</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Settings <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="./PrepareUpdateKorisnikLozinka">Change
+												Password</a></li>
+										<li><a href="./PrepareUpdateUser">Update profile</a></li>
+										<li role="separator" class="divider"></li>
+										<li class="dropdown-header"></li>
+										<li><a href="./PrepareCreateControllerKorisnik">See
+												all users</a></li>
+									</ul></li>
+							</ul>
+						</div>
+						<!--/.nav-collapse -->
+					</c:if>
+
+					<!-- Meni kada je korisnik ulogovan kao MODERATOR -->
+					<c:if test="${sessionScope.subscriber==true}">
+						<div id="navbar" class="navbar-collapse collapse">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="./index.jsp">Home</a></li>
+								<li><a href="./ReadControllerEbooks">E-books</a></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Category <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="./PrepareReadControllerCategory">See all</a></li>
+										<li role="separator" class="divider"></li>
+										<li class="dropdown-header">See more</li>
+										<li><a href="./FindCategory?categorySelect=Sci-fi">Sci-fi</a></li>
+										<li><a href="./FindCategory?categorySelect=Comic">Comic</a></li>
+										<li><a href="./FindCategory?categorySelect=Mystery">Mystery</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Settings <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="./PrepareUpdateKorisnikLozinka">Change
+												Password</a></li>
+										<li><a href="./PrepareUpdateUser">Update profile</a></li>
+									</ul></li>
+							</ul>
+						</div>
+						<!--/.nav-collapse -->
+					</c:if>
+
+
+				</form>
+
+
+				<form class="navbar-form navbar-right">
+					<c:if test="${sessionScope.admin!=null}">
+						<p id="printName">${sessionScope.adminName}</p>
+					</c:if>
+					<c:if
+						test="${sessionScope.administrator == null && sessionScope.subscriber== null }">
 						<a class="dugme" href="./login.jsp">Sign in</a>
-				
-				</c:if>
-				<c:if test="${sessionScope.administrator==true || sessionScope.subscriber==true}">
-				           			<td> <a class="dugme" href="./LogoutController">Log out</a> </td>
-				</c:if>	
-					
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
+
+					</c:if>
+					<c:if
+						test="${sessionScope.administrator==true || sessionScope.subscriber==true}">
+						<td><a class="dugme" href="./LogoutController">Log out</a></td>
+					</c:if>
+
+				</form>
+			</div>
+			<!--/.navbar-collapse -->
+		</div>
+	</nav>
     
     
     <div class="jumbotron">
