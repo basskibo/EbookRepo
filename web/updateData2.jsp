@@ -164,13 +164,7 @@
 				<h1>Change data</h1>
 				<p class="lead">Here you can change data.You can enter new first
 					and last name,also you can change password.</p>
-				<%-- 	<c:forEach items = "${user}" var = "u">
-					
-						<p>u.fName </p>
-						<p>u.lName </p>
-						<p>u.username </p>
-						
-					</c:forEach> --%>
+			
 			</div>
 
 

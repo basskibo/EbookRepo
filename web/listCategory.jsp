@@ -223,7 +223,7 @@
 
 					<!-- Example row of columns -->
 					<div class="row1">
-						<div class="col-md-2" style="margin: 10px 10px 10px 0px;">
+						<div class="col-md-2" style="margin: 10px 10px 10px 0px;height: 400px;">
 							<img
 								src="http://vectyr.com/wp-content/uploads/2012/12/BookCover5_5x8_5_BW_240.jpg"
 								width="100" height="100">
@@ -232,7 +232,7 @@
 							<p id="printNameP">You can find more about ${cat.name } if
 								you click button below.</p>
 							<p>
-								<a class="btn btn-default" href="./login.jsp" role="button">View
+								<a class="btn btn-default" href="./FindCategoryBooks?category_id=${cat.categoryID }" role="button">View
 									details &raquo;</a>
 							</p>
 						</div>
