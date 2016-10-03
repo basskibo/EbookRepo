@@ -43,6 +43,8 @@ jndi.properties			- konfiguracija JNDI klijenta
 ---------------------
 [] ant deploy
 [] ant prepare-database
-http://localhost:8080/Vezbe07/
+http://localhost:8080/Project/
+
+baza MySQLDatabase/osadb
 
 (Napomena: neophodno je izmeniti podatke u build.properites, pokrenuti MySQL server unutar koga je kreirana odgovarajuca baza podataka i pokrenuti Tomee server)
