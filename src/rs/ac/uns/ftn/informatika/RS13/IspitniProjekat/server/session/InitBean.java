@@ -75,7 +75,7 @@ public class InitBean implements Init {
 		korisnikDAO.persist(korisnik2);
 		User korisnik3 = new User("Momir", "Jokic", "moma", "123", "subscriber",kat112);
 		korisnikDAO.persist(korisnik3);
-		User korisnik4 = new User("Srdjan", "Radojicic", "cipi", "123", "subscriber",kat11);
+		User korisnik4 = new User("Srdjan", "Radojicic", "cipi", "123", "subscriber",null);
 		korisnikDAO.persist(korisnik4);
 		User korisnik41 = new User("Marko", "Markovic", "mare", "123", "subscriber",kat9);
 		korisnikDAO.persist(korisnik41);
@@ -106,17 +106,26 @@ public class InitBean implements Init {
 		l6.setName("French");
 		languageDao.persist(l6);
 		
-		Ebook eb1 = new Ebook("Zagor", "Bonelli", "strip veseli", 1986, "Zagor strip", "pdf", l1, kat1);
-		Ebook eb2 = new Ebook("Mister No", "Bonelli", "veselicetvrtak", 1989, "mrNo strip", "pdf", l3, kat1);
-		Ebook eb3 = new Ebook("Star Wars", "George Lucas", "lucasart", 1989, "mrNo strip", "pdf", l3, kat2);
+		Ebook eb1 = new Ebook("Zagor", "Bonelli", "strip veseli", 1986, "Zagor strip", "pdf", l1, kat3);
+		Ebook eb2 = new Ebook("Mister No", "Bonelli", "veselicetvrtak", 1989, "mrNo strip", "pdf", l3, kat3);
+		Ebook eb3 = new Ebook("Star Wars", "George Lucas", "lucasart", 1987, "mrNo strip", "pdf", l3, kat2);
 		Ebook eb4 = new Ebook("Java for dummies", "Some guy", "lucasart", 2010, "java", "pdf", l4, kat9);
+		Ebook eb5 = new Ebook("Da Vinci's Code", "Dan Brown", "lucasart", 2005, "da_vinci", "pdf", l1, kat4);
+		Ebook eb6 = new Ebook("Inferno", "Dan Brown", "lucasart", 2014, "java", "pdf", l2, kat4);
+		Ebook eb7 = new Ebook("Na Drini cuprija", "Ivo Andric", "lucasart", 1945, "java", "pdf", l5, kat11);
+		Ebook eb8 = new Ebook("Star Wars II", "George Lucas", "lucasart", 2002, "mrNo strip", "pdf", l1, kat2);
+		Ebook eb9 = new Ebook("Star Wars III", "George Lucas", "lucasart", 2003, "mrNo strip", "pdf", l1, kat2);
 
 		
 		ebookDAO.persist(eb1);
 		ebookDAO.persist(eb2);
 		ebookDAO.persist(eb3);
 		ebookDAO.persist(eb4);
-
+		ebookDAO.persist(eb5);
+		ebookDAO.persist(eb6);
+		ebookDAO.persist(eb7);
+		ebookDAO.persist(eb8);
+		ebookDAO.persist(eb9);
 
 		
 	
