@@ -26,10 +26,7 @@
    </servlet>
    
    
-   <servlet>
-      <servlet-name>ReadControllerModeli</servlet-name>
-      <servlet-class>rs.ac.uns.ftn.informatika.RS13.IspitniProjekat.server.servlet.ReadControllerModeli</servlet-class>
-   </servlet>
+
        
    <servlet>
       <servlet-name>DeleteControllerEbook</servlet-name>
@@ -160,10 +157,7 @@
       <url-pattern>/DeleteControllerCategory</url-pattern>
    </servlet-mapping> 
    
-   <servlet-mapping>
-      <servlet-name>ReadControllerModeli</servlet-name>
-      <url-pattern>/ReadControllerModeli</url-pattern>
-   </servlet-mapping>
+
    
    <servlet-mapping>
       <servlet-name>PrepareCreateControllerProizvodjac</servlet-name>
